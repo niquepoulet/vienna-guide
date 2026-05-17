@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Vienna Events Guide — May–June 2026</title>
+<!-- PWA -->
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#8B1A2B">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Vienna Guide">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<style>
+:root {
+  color-scheme: light;
+  --imperial: #8B1A2B;
+  --imperial-dark: #5C1020;
+  --gold: #C8923A;
+  --gold-light: #FBF3E3;
+  --gold-border: #E8C882;
+  --bg: #F9F7F4;
+  --card-bg: #FFFFFF;
+  --text: #1A1A1A;
+  --muted: #6B6560;
+  --border: #E5DDD4;
+  --shadow: 0 2px 14px rgba(0,0,0,0.07);
+  --shadow-h: 0 6px 24px rgba(0,0,0,0.13);
+  --r: 12px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ── HEADER ── */
+.hdr{background:linear-gradient(135deg,var(--imperial) 0%,var(--imperial-dark) 100%);color:#fff;padding:18px 24px 14px;position:sticky;top:0;z-index:300;box-shadow:0 4px 24px rgba(0,0,0,.28)}
+.hdr-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hdr h1{font-size:1.6rem;font-weight:normal;letter-spacing:.02em;line-height:1.2}
+.hdr h1 .g{color:var(--gold)}
+.hdr-sub{font-family:sans-serif;font-size:.72rem;opacity:.7;margin-top:3px;letter-spacing:.04em}
+.hdr-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.lu{font-family:sans-serif;font-size:.68rem;opacity:.6;white-space:nowrap}
+.upd-btn{background:var(--gold);color:#1A0800;border:none;padding:6px 13px;border-radius:20px;font-size:.75rem;font-family:sans-serif;font-weight:700;cursor:pointer;transition:opacity .2s;white-space:nowrap}
+.upd-btn:hover{opacity:.82}
+
+/* ── 3-DAY BANNER ── */
+.three-day{background:#fff;border-bottom:2px solid var(--gold-border)}
+.three-day-toggle{display:flex;align-items:center;justify-content:space-between;padding:10px 24px;cursor:pointer;user-select:none;gap:8px}
+.three-day-toggle:hover{background:#FBF8F5}
+.tdt-left{display:flex;align-items:center;gap:10px}
+.tdt-badge{background:var(--imperial);color:#fff;font-family:sans-serif;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+.tdt-title{font-family:sans-serif;font-size:.85rem;font-weight:700;color:var(--imperial)}
+.tdt-subtitle{font-family:sans-serif;font-size:.75rem;color:var(--muted)}
+.tdt-chevron{font-size:1rem;color:var(--muted);transition:transform .2s;flex-shrink:0}
+.tdt-chevron.open{transform:rotate(180deg)}
+.three-day-body{display:none;padding:0 24px 20px;border-top:1px solid var(--gold-light)}
+.three-day-body.open{display:block}
+.day-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:16px}
+.day-col{background:var(--gold-light);border:1px solid var(--gold-border);border-radius:10px;overflow:hidden}
+.day-head{background:var(--imperial);color:#fff;padding:9px 14px}
+.day-name{font-family:sans-serif;font-size:.92rem;font-weight:700}
+.day-note{font-family:sans-serif;font-size:.68rem;opacity:.8;margin-top:1px}
+.day-items{padding:10px 14px;display:flex;flex-direction:column;gap:8px}
+.day-item{display:flex;gap:10px;align-items:flex-start}
+.di-time{font-family:sans-serif;font-size:.7rem;font-weight:700;color:var(--imperial);white-space:nowrap;min-width:42px;padding-top:2px}
+.di-name{font-family:sans-serif;font-size:.8rem;font-weight:700;color:var(--text);line-height:1.3}
+.di-name a{color:inherit;text-decoration:none}
+.di-name a:hover{text-decoration:underline}
+.di-detail{font-family:sans-serif;font-size:.72rem;color:var(--muted);line-height:1.4}
+.di-free{display:inline-block;background:#E8F5E9;color:#2E7D32;border:1px solid #A5D6A7;font-size:.6rem;font-weight:700;padding:1px 6px;border-radius:8px;margin-left:4px;text-transform:uppercase;vertical-align:middle}
+.di-hot{display:inline-block;background:#FFEBEE;color:#C62828;border:1px solid #FFCDD2;font-size:.6rem;font-weight:700;padding:1px 6px;border-radius:8px;margin-left:4px;text-transform:uppercase;vertical-align:middle}
+.day-tip{background:#fff;margin:0 10px 10px;padding:8px 10px;border-radius:6px;border-left:3px solid var(--gold);font-family:sans-serif;font-size:.73rem;color:#5A3800;line-height:1.5}
+
+/* ── TABS ── */
+.tabs-wrap{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:68px;z-index:200;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tabs-wrap::-webkit-scrollbar{height:0}
+.tabs{display:flex;padding:0 16px;min-width:max-content}
+.tab{display:flex;align-items:center;gap:5px;height:48px;padding:0 14px;cursor:pointer;font-family:sans-serif;font-size:.78rem;font-weight:500;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:color .18s,border-color .18s;user-select:none}
+.tab:hover{color:var(--imperial)}
+.tab.active{color:var(--imperial);border-bottom-color:var(--imperial);font-weight:700}
+.tab .tc{font-family:sans-serif;font-size:.65rem;background:var(--imperial);color:#fff;padding:1px 5px;border-radius:8px;margin-left:2px}
+.tab.likes-tab .tc{background:var(--gold);color:#1A0800}
+
+/* ── MAIN ── */
+.main{max-width:1100px;margin:0 auto;padding:20px 18px 48px}
+
+/* ── FILTER BAR ── */
+.fbar{display:flex;align-items:center;gap:7px;margin-bottom:20px;flex-wrap:wrap}
+.fl{font-family:sans-serif;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding-right:3px}
+.fb{padding:4px 13px;border-radius:20px;border:1.5px solid var(--border);background:#fff;font-family:sans-serif;font-size:.75rem;font-weight:500;color:var(--muted);cursor:pointer;transition:all .15s}
+.fb:hover{border-color:var(--imperial);color:var(--imperial)}
+.fb.active{background:var(--imperial);color:#fff;border-color:var(--imperial);font-weight:700}
+
+/* ── SECTION HEAD ── */
+.sh{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:9px;border-bottom:2px solid var(--gold-light)}
+.sh .icon{font-size:1.2rem}
+.sh h2{font-size:1rem;color:var(--imperial);font-weight:normal;letter-spacing:.02em}
+.sh .cnt{font-family:sans-serif;font-size:.68rem;background:var(--gold-light);color:var(--gold);border:1px solid var(--gold-border);padding:2px 8px;border-radius:10px;font-weight:700;margin-left:auto}
+
+/* ── GRID ── */
+.eg{display:grid;grid-template-columns:repeat(auto-fill,minmax(288px,1fr));gap:15px;margin-bottom:28px}
+
+/* ── CARD ── */
+.card{background:var(--card-bg);border-radius:var(--r);box-shadow:var(--shadow);border:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-h)}
+.card.hidden{display:none}
+.cs{height:5px;flex-shrink:0}
+.cat-opera   .cs{background:linear-gradient(90deg,#8B1A2B,#C43050)}
+.cat-music   .cs{background:linear-gradient(90deg,#1565C0,#42A5F5)}
+.cat-cinema  .cs{background:linear-gradient(90deg,#4A148C,#9C27B0)}
+.cat-outdoor .cs{background:linear-gradient(90deg,#2E7D32,#66BB6A)}
+.cat-cultural.cs{background:linear-gradient(90deg,#6A1B9A,#AB47BC)}
+.cat-exhibit .cs{background:linear-gradient(90deg,#C8923A,#E8C862)}
+.cb{padding:14px 15px;flex:1;display:flex;flex-direction:column;gap:8px}
+.badges{display:flex;gap:5px;flex-wrap:wrap}
+.badge{padding:2px 9px;border-radius:20px;font-family:sans-serif;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.b-venue{background:#F2EDE8;color:#7A6A5A}
+.b-free{background:#E8F5E9;color:#2E7D32;border:1px solid #A5D6A7}
+.b-tix{background:#FFF3E0;color:#BF6000;border:1px solid #FFCC80}
+.b-ong{background:#E3F2FD;color:#1565C0;border:1px solid #90CAF9}
+.b-cls{background:#FCE4EC;color:#880E4F;border:1px solid #F48FB1}
+.b-gen{background:#EDE7F6;color:#4527A0;border:1px solid #CE93D8}
+.b-new{background:#E8F5E9;color:#1B5E20;border:1px solid #81C784}
+.ct{font-size:.95rem;font-weight:bold;line-height:1.35;color:var(--text)}
+.csub{font-family:sans-serif;font-size:.73rem;color:var(--imperial);font-style:italic}
+.cw{display:flex;align-items:flex-start;gap:6px;font-family:sans-serif;font-size:.76rem;color:var(--muted)}
+.cw .wi{font-size:.82rem;flex-shrink:0;margin-top:1px}
+.cw-t{line-height:1.4}
+.cd{font-family:sans-serif;font-size:.78rem;color:var(--muted);line-height:1.55;flex:1}
+.cf{padding:9px 15px;background:#FAFAF8;border-top:1px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.cl{font-family:sans-serif;font-size:.72rem;font-weight:700;color:var(--imperial);text-decoration:none;padding:4px 10px;border-radius:6px;border:1.5px solid var(--imperial);transition:all .15s}
+.cl:hover{background:var(--imperial);color:#fff}
+.cl.p{background:var(--imperial);color:#fff}
+.cl.p:hover{background:var(--imperial-dark)}
+.like-btn{margin-left:auto;background:none;border:1.5px solid var(--border);border-radius:20px;padding:3px 9px;cursor:pointer;color:var(--muted);transition:all .18s;display:flex;align-items:center;gap:4px;font-family:sans-serif;font-size:.7rem;white-space:nowrap}
+.like-btn:hover{border-color:#E57373;color:#E57373}
+.like-btn.liked{background:#FCE4EC;border-color:#E91E63;color:#C2185B;font-weight:700}
+
+/* ── SITE CARDS ── */
+.sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(288px,1fr));gap:15px;margin-bottom:28px}
+.sc{background:var(--card-bg);border-radius:var(--r);box-shadow:var(--shadow);border:1px solid var(--border);border-left:5px solid #5D4037;padding:15px;display:flex;flex-direction:column;gap:8px;transition:transform .15s,box-shadow .15s}
+.sc:hover{transform:translateY(-3px);box-shadow:var(--shadow-h)}
+.sc-top{display:flex;align-items:center;gap:10px}
+.sc-icon{font-size:1.5rem;flex-shrink:0}
+.sc-name{font-size:.95rem;font-weight:bold;line-height:1.25}
+.sc-hrs{font-family:sans-serif;font-size:.72rem;color:var(--muted);line-height:1.4}
+.sc-desc{font-family:sans-serif;font-size:.77rem;color:var(--muted);line-height:1.55;flex:1}
+.sc-tip{font-family:sans-serif;font-size:.73rem;background:var(--gold-light);border-left:3px solid var(--gold);padding:6px 10px;color:#5A3800;border-radius:0 6px 6px 0;line-height:1.45}
+.sc-links{display:flex;gap:7px;flex-wrap:wrap;margin-top:2px}
+
+/* ── INFO BOX ── */
+.ib{background:var(--gold-light);border:1px solid var(--gold-border);border-radius:8px;padding:10px 14px;font-family:sans-serif;font-size:.78rem;color:#5A3800;margin-bottom:18px;display:flex;gap:9px;align-items:flex-start;line-height:1.5}
+.ib .ii{font-size:1rem;flex-shrink:0;margin-top:1px}
+
+/* ── MY LIKES PANEL ── */
+.profile-box{background:linear-gradient(135deg,var(--imperial) 0%,var(--imperial-dark) 100%);color:#fff;border-radius:12px;padding:18px 20px;margin-bottom:22px}
+.profile-box h3{font-size:1rem;font-weight:normal;letter-spacing:.03em;margin-bottom:6px}
+.profile-box p{font-family:sans-serif;font-size:.82rem;opacity:.9;line-height:1.55}
+.profile-cats{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.profile-cat{background:rgba(255,255,255,.15);color:#fff;font-family:sans-serif;font-size:.72rem;padding:3px 11px;border-radius:20px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.empty-likes{text-align:center;padding:40px 20px;font-family:sans-serif;color:var(--muted);font-size:.88rem}
+.el-icon{font-size:2.5rem;display:block;margin-bottom:12px}
+.send-likes-btn{background:var(--imperial);color:#fff;border:none;padding:8px 18px;border-radius:20px;font-family:sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;margin-top:14px;transition:opacity .2s}
+.send-likes-btn:hover{opacity:.85}
+
+/* ── PANEL ── */
+.panel{display:none}
+.panel.active{display:block}
+.no-ev{font-family:sans-serif;color:var(--muted);text-align:center;padding:36px 20px;font-size:.88rem}
+
+/* ── FOOTER ── */
+.foot{text-align:center;padding:18px;font-family:sans-serif;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);margin-top:16px}
+.foot a{color:var(--imperial);text-decoration:none}
+
+@media(max-width:640px){
+  .hdr h1{font-size:1.3rem}
+  .main{padding:14px 10px 40px}
+  .eg,.sg{grid-template-columns:1fr}
+  .day-grid{grid-template-columns:1fr}
+  .tabs-wrap{top:62px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header class="hdr">
+  <div class="hdr-row">
+    <div>
+      <h1>🎵 Vienna <span class="g">Events Guide</span></h1>
+      <div class="hdr-sub">MAY – JUNE 2026 &nbsp;·&nbsp; ENGLISH-SPEAKING VISITORS &nbsp;·&nbsp; VERIFIED DATES &amp; LINKS</div>
+    </div>
+    <div class="hdr-right">
+      <span class="lu">Last updated: May 17, 2026</span>
+      <button class="upd-btn" onclick="sendPrompt('Please refresh my Vienna Events Guide dashboard with the latest verified events, Haydn Kino film schedule, concerts, exhibitions and cultural events through June 30, 2026. Sort all events soonest to latest.')">⟳ Request Daily Update</button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ 3-DAY BANNER ══ -->
+<div class="three-day">
+  <div class="three-day-toggle" onclick="toggleThreeDay()">
+    <div class="tdt-left">
+      <span class="tdt-badge" id="weekend-badge">Next 3 Days</span>
+      <div>
+        <div class="tdt-title" id="three-day-title">May 17–19, 2026 — Patti Smith on Tuesday!</div>
+        <div class="tdt-subtitle" id="tdt-sub">Curated schedule · Click to expand ▾</div>
+      </div>
+    </div>
+    <span class="tdt-chevron open" id="tdt-chev">▾</span>
+  </div>
+  <div class="three-day-body open" id="three-day-body">
+    <div class="day-grid" id="day-grid-content"></div>
+  </div>
+</div>
+
+<!-- ══ TABS ══ -->
+<div class="tabs-wrap">
+  <div class="tabs">
+    <div class="tab active" data-panel="all">🗺️ All Events</div>
+    <div class="tab" data-panel="opera">🎭 Opera &amp; Classical</div>
+    <div class="tab" data-panel="music">🎵 Jazz &amp; Contemporary</div>
+    <div class="tab" data-panel="cinema">🎬 Cinema</div>
+    <div class="tab" data-panel="outdoor">🌿 Outdoor &amp; Festivals</div>
+    <div class="tab" data-panel="cultural">🎪 Cultural Events</div>
+    <div class="tab" data-panel="exhibition">🖼️ Exhibitions</div>
+    <div class="tab" data-panel="sightseeing">🏰 Sites &amp; Museums</div>
+    <div class="tab likes-tab" data-panel="likes">❤️ My Likes <span class="tc" id="likes-count">0</span></div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <!-- ALL PANEL -->
+  <div class="panel active" id="panel-all">
+    <div class="fbar">
+      <span class="fl">Show:</span>
+      <button class="fb active" data-filter="all">All dates</button>
+      <button class="fb" data-filter="may">May</button>
+      <button class="fb" data-filter="jun">June</button>
+      <button class="fb" data-filter="free">Free</button>
+      <button class="fb" data-filter="ongoing">Ongoing</button>
+    </div>
+    <div class="sh"><span class="icon">🎭</span><h2>Opera &amp; Classical</h2></div>
+    <div class="eg" id="g-all-opera"></div>
+    <div class="sh"><span class="icon">🎵</span><h2>Jazz &amp; Contemporary Music</h2></div>
+    <div class="eg" id="g-all-music"></div>
+    <div class="sh"><span class="icon">🎬</span><h2>Cinema — Haydn Kino (English)</h2></div>
+    <div class="eg" id="g-all-cinema"></div>
+    <div class="sh"><span class="icon">🌿</span><h2>Outdoor &amp; Festivals</h2></div>
+    <div class="eg" id="g-all-outdoor"></div>
+    <div class="sh"><span class="icon">🎪</span><h2>Cultural Events</h2></div>
+    <div class="eg" id="g-all-cultural"></div>
+    <div class="sh"><span class="icon">🖼️</span><h2>Special Exhibitions</h2></div>
+    <div class="eg" id="g-all-exhibit"></div>
+  </div>
+
+  <!-- OPERA PANEL -->
+  <div class="panel" id="panel-opera">
+    <div class="ib"><span class="ii">ℹ️</span><span>Vienna's opera houses present some of the world's finest performances. Book well in advance. <strong>Stehplatz (standing room)</strong> tickets go on sale 80 min before curtain at the State Opera — often just €3–10 for a full performance.</span></div>
+    <div class="fbar"><span class="fl">Filter:</span><button class="fb active" data-filter="all">All</button><button class="fb" data-filter="may">May</button><button class="fb" data-filter="jun">June</button></div>
+    <div class="sh"><span class="icon">🎭</span><h2>Opera &amp; Classical — Large Venues</h2><span class="cnt" id="cnt-opera">0</span></div>
+    <div class="eg" id="g-opera"></div>
+  </div>
+
+  <!-- MUSIC PANEL -->
+  <div class="panel" id="panel-music">
+    <div class="ib"><span class="ii">🎸</span><span>Vienna's live music scene beyond classical: jazz cellars open 6 nights a week, iconic alternative venues (Arena Wien, WUK), and major stadium concerts. The Wiener Festwochen brings international artists to unexpected settings through June 21.</span></div>
+    <div class="fbar"><span class="fl">Filter:</span><button class="fb active" data-filter="all">All</button><button class="fb" data-filter="may">May</button><button class="fb" data-filter="jun">June</button><button class="fb" data-filter="free">Free</button></div>
+    <div class="sh"><span class="icon">🎵</span><h2>Jazz &amp; Contemporary Music</h2><span class="cnt" id="cnt-music">0</span></div>
+    <div class="eg" id="g-music"></div>
+  </div>
+
+  <!-- CINEMA PANEL -->
+  <div class="panel" id="panel-cinema">
+    <div class="ib"><span class="ii">🎬</span><span><strong>English Cinema Haydn</strong> — Vienna's only English-language cinema since 1914. All films in English, no subtitles. <strong>Weekly schedule posted every Monday evening</strong> for the following Thu–Wed. Mariahilferstraße 57 (U3 Neubaugasse) · Hotline: +43 1 587 22 62</span></div>
+    <div class="fbar"><span class="fl">Filter:</span><button class="fb active" data-filter="all">All</button><button class="fb" data-filter="may">May</button><button class="fb" data-filter="jun">June</button></div>
+    <div class="sh"><span class="icon">🎬</span><h2>Haydn Kino — English-Language Films</h2><span class="cnt" id="cnt-cinema">0</span></div>
+    <div class="eg" id="g-cinema"></div>
+  </div>
+
+  <!-- OUTDOOR PANEL -->
+  <div class="panel" id="panel-outdoor">
+    <div class="ib"><span class="ii">🌞</span><span>Vienna in June is magical — free orchestral concerts on palace lawns, picnics beside the Giant Ferris Wheel. The confirmed <strong>Summer Night Concert (June 19)</strong> features conductor Lorenzo Viotti and Welsh bass-baritone Sir Bryn Terfel. Bring a blanket and arrive early.</span></div>
+    <div class="fbar"><span class="fl">Filter:</span><button class="fb active" data-filter="all">All</button><button class="fb" data-filter="free">Free only</button></div>
+    <div class="sh"><span class="icon">🌿</span><h2>Outdoor Music &amp; Festivals</h2><span class="cnt" id="cnt-outdoor">0</span></div>
+    <div class="eg" id="g-outdoor"></div>
+  </div>
+
+  <!-- CULTURAL PANEL -->
+  <div class="panel" id="panel-cultural">
+    <div class="ib"><span class="ii">🎪</span><span>The <strong>Wiener Festwochen (May 15–June 21)</strong> celebrates 75 years with 35 productions including 13 world premieres. Highlights: Robert Wilson's <em>The Tempest</em> (Burgtheater), the Chineke! Orchestra, and free opening concert at Heldenplatz.</span></div>
+    <div class="fbar"><span class="fl">Filter:</span><button class="fb active" data-filter="all">All</button><button class="fb" data-filter="may">May</button><button class="fb" data-filter="jun">June</button><button class="fb" data-filter="free">Free</button></div>
+    <div class="sh"><span class="icon">🎪</span><h2>Cultural Events</h2><span class="cnt" id="cnt-cultural">0</span></div>
+    <div class="eg" id="g-cultural"></div>
+  </div>
+
+  <!-- EXHIBITION PANEL -->
+  <div class="panel" id="panel-exhibition">
+    <div class="ib"><span class="ii">🖼️</span><span>All major exhibitions present information in English. <strong>⚠️ Daumier at the Albertina closes May 25 — only 8 days left!</strong> Courbet at the Leopold Museum closes June 21. Otto meets Albertina opens June 3.</span></div>
+    <div class="fbar"><span class="fl">Filter:</span><button class="fb active" data-filter="all">All</button><button class="fb" data-filter="closing">Closing soon</button></div>
+    <div class="sh"><span class="icon">🖼️</span><h2>Special Exhibitions</h2><span class="cnt" id="cnt-exhibit">0</span></div>
+    <div class="eg" id="g-exhibit"></div>
+  </div>
+
+  <!-- SIGHTSEEING PANEL -->
+  <div class="panel" id="panel-sightseeing">
+    <div class="ib"><span class="ii">🏰</span><span>All major sites offer English audio guides and staff. <strong>Pre-book Schönbrunn online</strong> — it sells out on sunny days. KHM and Albertina offer extended Thursday evening hours until 9 PM.</span></div>
+    <div class="sh"><span class="icon">🏰</span><h2>Historical Sites &amp; Museums</h2></div>
+    <div class="sg" id="g-sites"></div>
+  </div>
+
+  <!-- LIKES PANEL -->
+  <div class="panel" id="panel-likes">
+    <div class="profile-box">
+      <h3>❤️ Your Vienna Profile</h3>
+      <p id="profile-text">Save any event by tapping ❤️ to build your personal profile and get tailored recommendations.</p>
+      <div class="profile-cats" id="profile-cats"></div>
+    </div>
+    <div id="likes-empty" class="empty-likes">
+      <span class="el-icon">🎭</span>
+      <div>No saved events yet.<br>Tap <strong>❤️ Save</strong> on any card to collect your favourites here.</div>
+      <button class="send-likes-btn" onclick="sendPrompt('Based on my likes in the Vienna Events Guide, can you recommend additional events in Vienna that I might enjoy?')">Ask Claude for personalised recommendations</button>
+    </div>
+    <div id="likes-sh" class="sh" style="display:none"><span class="icon">❤️</span><h2>Saved Events</h2><span class="cnt" id="cnt-likes">0</span></div>
+    <div class="eg" id="g-likes"></div>
+    <div id="likes-actions" style="display:none;margin-top:4px">
+      <button class="send-likes-btn" onclick="sendLikesSummary()">📊 Send profile to Claude for recommendations</button>
+    </div>
+  </div>
+
+</main>
+
+<footer class="foot">
+  Vienna Events Guide · Sources: wiener-staatsoper.at · wienerphilharmoniker.at · wienersymphoniker.at · haydnkino.at · porgy.at · festwochen.at · albertina.at · khm.at · wien.info
+  &nbsp;·&nbsp; Verify all event details before booking &nbsp;·&nbsp; <a href="https://www.wien.info/en" target="_blank">Official Vienna Tourism ↗</a>
+</footer>
+
+<script>
+// ════════════════════════════════════════════════════════
+//  DATA — update this block to refresh the dashboard
+//  Last data refresh: May 17, 2026
+// ════════════════════════════════════════════════════════
+
+const EVENTS = [
+
+  // ── OPERA & CLASSICAL ─────────────────────────────────
+  {id:1,cat:'opera',genre:'',
+   title:'Vienna Philharmonic — Riccardo Muti · Haydn Symphonies',
+   subtitle:'Musikverein, Golden Hall',
+   venue:'Musikverein — Golden Hall',
+   dateDisplay:'May 17, 20 & 21, 2026',timeDisplay:'7:30 PM',
+   sortDate:'2026-05-17',dates:['2026-05-17','2026-05-20','2026-05-21'],month:'may',
+   desc:'Legendary maestro Riccardo Muti leads the Vienna Philharmonic in Haydn\'s Symphonies No. 103 ("Drum Roll") and No. 104 ("London") — three remaining evenings in the Golden Hall, acknowledged as the world\'s finest concert acoustics.',
+   infoUrl:'https://www.wienerphilharmoniker.at/en/konzerte',ticketUrl:'https://www.viennaconcerts.com/vienna-philharmonic-orchestra',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:2,cat:'opera',genre:'',
+   title:'Vienna Symphony — Hayato Sumino · Ravel & Beethoven 5',
+   subtitle:'Konzerthaus · Korngold, Ravel Piano Concerto',
+   venue:'Konzerthaus',
+   dateDisplay:'May 18 & 19, 2026',timeDisplay:'7:30 PM',
+   sortDate:'2026-05-18',dates:['2026-05-18','2026-05-19'],month:'may',
+   desc:'Japanese pianist Hayato Sumino-Cateen performs Ravel\'s sparkling Piano Concerto in G, flanked by Korngold\'s Overture and Beethoven\'s thunderous Fifth Symphony, under Chief Conductor Petr Popelka.',
+   infoUrl:'https://www.wienersymphoniker.at/en/calendar',ticketUrl:'https://www.wienersymphoniker.at/en/calendar',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:9,cat:'opera',genre:'',
+   title:'Eugene Onegin — Tchaikovsky',
+   subtitle:'Vienna State Opera · Pushkin\'s tragic romance',
+   venue:'Wiener Staatsoper',
+   dateDisplay:'May 22, 2026',timeDisplay:'7:00 PM',
+   sortDate:'2026-05-22',dates:['2026-05-22'],month:'may',
+   desc:'Tchaikovsky\'s intimate masterpiece — the poet Onegin rejects the young Tatiana\'s love, only to fall for her when it is too late. One of opera\'s most heartbreaking narratives. Performed in Russian with English surtitles.',
+   infoUrl:'https://www.wiener-staatsoper.at/en/calendar/2026/may/',ticketUrl:'https://www.wiener-staatsoper.at/en/calendar/2026/may/',
+   free:false,ongoing:false,closing:false,isNew:true},
+
+  {id:3,cat:'opera',genre:'',
+   title:'Animal Farm — Opera',
+   subtitle:'Vienna State Opera · Orwell\'s dystopia on stage',
+   venue:'Wiener Staatsoper',
+   dateDisplay:'June 12, 16, 18 & 23, 2026',timeDisplay:'7:00 PM',
+   sortDate:'2026-06-12',dates:['2026-06-12','2026-06-16','2026-06-18','2026-06-23'],month:'jun',
+   desc:'A bold opera adaptation of Orwell\'s classic dystopia — revolution, power, and betrayal in riveting musical form. Sung in German with English surtitles.',
+   infoUrl:'https://www.wiener-staatsoper.at/en/calendar/detail/animal-farm/',ticketUrl:'https://www.wiener-staatsoper.at/en/calendar/detail/animal-farm/',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:4,cat:'opera',genre:'',
+   title:'Vienna Philharmonic — Lorenzo Viotti',
+   subtitle:'Musikverein, Golden Hall',
+   venue:'Musikverein — Golden Hall',
+   dateDisplay:'June 13, 14 & 15, 2026',timeDisplay:'7:30 PM',
+   sortDate:'2026-06-13',dates:['2026-06-13','2026-06-14','2026-06-15'],month:'jun',
+   desc:'The Vienna Philharmonic at the Golden Hall under Lorenzo Viotti — who also conducts the Summer Night Concert at Schönbrunn on June 19. Programme TBC; check wienerphilharmoniker.at.',
+   infoUrl:'https://www.wienerphilharmoniker.at/en/konzerte',ticketUrl:'https://www.viennaconcerts.com/vienna-philharmonic-orchestra',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:5,cat:'opera',genre:'',
+   title:'Vienna Symphony — Beatrice Rana · Brahms & Schubert',
+   subtitle:'Konzerthaus · Brahms Piano Concerto No. 2',
+   venue:'Konzerthaus',
+   dateDisplay:'June 18, 19 & 21, 2026',timeDisplay:'7:30 PM',
+   sortDate:'2026-06-18',dates:['2026-06-18','2026-06-19','2026-06-21'],month:'jun',
+   desc:'Acclaimed pianist Beatrice Rana performs Brahms\' colossal Piano Concerto No. 2, paired with Schubert\'s "Great" Symphony. June 21 includes commentary by presenter Barbara Rett.',
+   infoUrl:'https://www.wienersymphoniker.at/en/calendar',ticketUrl:'https://www.wienersymphoniker.at/en/calendar',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:6,cat:'opera',genre:'',
+   title:'Il Trittico — Season Finale',
+   subtitle:'Puccini · Three one-act operas · Vienna State Opera',
+   venue:'Wiener Staatsoper',
+   dateDisplay:'June 21, 25, 27 & 30, 2026',timeDisplay:'7:00 PM',
+   sortDate:'2026-06-21',dates:['2026-06-21','2026-06-25','2026-06-27','2026-06-30'],month:'jun',
+   desc:'Puccini\'s magnificent triptych — Il Tabarro, Suor Angelica, and Gianni Schicchi — closes the 2025/26 season. Three masterpieces in one unforgettable evening. English surtitles.',
+   infoUrl:'https://www.wiener-staatsoper.at/en/calendar/detail/il-trittico/2026-06-21/',ticketUrl:'https://www.wiener-staatsoper.at/en/calendar/detail/il-trittico/2026-06-21/',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:7,cat:'opera',genre:'',
+   title:'Mozart Concert in Historical Costume',
+   subtitle:'Nightly · Musikverein, Palace Orangeries',
+   venue:'Multiple venues',
+   dateDisplay:'Nightly, May–June 2026',timeDisplay:'8:30 PM',
+   sortDate:'2026-05-17',dates:[],month:'both',
+   desc:'Vienna\'s most beloved visitor experience — period-costumed performers present Mozart\'s greatest hits in intimate historic halls. The Schönbrunn Palace Orangery setting is especially magical. Smart casual dress code.',
+   infoUrl:'https://www.mozart.co.at',ticketUrl:'https://www.mozart.co.at/vienna-mozart-concerts-in-historical-costumes-tickets-106-en.html',
+   free:false,ongoing:true,closing:false,isNew:false},
+
+  {id:8,cat:'opera',genre:'',
+   title:'Vienna Philharmonic Chamber Music',
+   subtitle:'Musikverein — Gustav Mahler Hall · Saturday series',
+   venue:'Musikverein — Mahler Hall',
+   dateDisplay:'Most Saturdays, May–June 2026',timeDisplay:'11:00 AM',
+   sortDate:'2026-05-23',dates:['2026-05-23','2026-05-30','2026-06-06','2026-06-13','2026-06-20','2026-06-27'],month:'both',
+   desc:'A hidden gem — members of the Vienna Philharmonic perform chamber music in the intimate Mahler Hall on most Saturday mornings. Rarely sold out, tickets often available at the box office.',
+   infoUrl:'https://www.wienerphilharmoniker.at/en/konzerte',ticketUrl:'https://www.viennaconcerts.com/',
+   free:false,ongoing:true,closing:false,isNew:false},
+
+  // ── JAZZ & CONTEMPORARY MUSIC ─────────────────────────
+  {id:20,cat:'music',genre:'Rock / Poetry',
+   title:'Patti Smith at Theater Akzent',
+   subtitle:'Wiener Festwochen · first Vienna appearance',
+   venue:'Theater Akzent',
+   dateDisplay:'May 19, 2026',timeDisplay:'8:00 PM',
+   sortDate:'2026-05-19',dates:['2026-05-19'],month:'may',
+   desc:'The legendary punk poet and rock icon performs at an intimate Vienna venue as part of the Festwochen\'s 75th anniversary programme. A rare opportunity in a small hall. Book immediately.',
+   infoUrl:'https://www.festwochen.at/en/patti-smith-quartet',ticketUrl:'https://www.festwochen.at/en/patti-smith-quartet',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:21,cat:'music',genre:'Jazz',
+   title:'Jazzland Vienna — Live Jazz 6 Nights/Week',
+   subtitle:'Vienna\'s oldest jazz cellar · under Ruprechtskirche',
+   venue:'Jazzland, Franz-Josefs-Kai 29',
+   dateDisplay:'6 nights/week, May–June 2026',timeDisplay:'9:00 PM',
+   sortDate:'2026-05-17',dates:[],month:'both',
+   desc:'Vienna\'s oldest jazz club, a rustic stone cellar beneath the Ruprechtskirche near the Danube Canal, open since the 1960s. All jazz styles, six nights a week. No reservations needed; arrive early for a table.',
+   infoUrl:'https://www.jazzland.at',ticketUrl:'https://www.jazzland.at',
+   free:false,ongoing:true,closing:false,isNew:false},
+
+  {id:22,cat:'music',genre:'Jazz',
+   title:'China Moses at Porgy & Bess',
+   subtitle:'One of Europe\'s top ten jazz clubs',
+   venue:'Porgy & Bess Jazz & Music Club',
+   dateDisplay:'May 25, 2026',timeDisplay:'8:00 PM',
+   sortDate:'2026-05-25',dates:['2026-05-25'],month:'may',
+   desc:'Charismatic French-American jazz vocalist China Moses performs at Vienna\'s premier jazz club — consistently rated one of the top ten in Europe. Rich, powerful voice drawing on soul and jazz traditions.',
+   infoUrl:'https://www.porgy.at/en/events/upcoming',ticketUrl:'https://www.porgy.at/en/events/upcoming',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:23,cat:'music',genre:'Jazz',
+   title:'André Weiß at Jazzland',
+   subtitle:'Live jazz in Vienna\'s oldest cellar',
+   venue:'Jazzland',
+   dateDisplay:'May 26, 2026',timeDisplay:'9:00 PM',
+   sortDate:'2026-05-26',dates:['2026-05-26'],month:'may',
+   desc:'An evening of jazz in the atmospheric stone cellar beneath Ruprechtskirche — intimate, up-close, and steeped in decades of musical history on Vienna\'s Danube Canal.',
+   infoUrl:'https://www.jazzland.at',ticketUrl:'https://www.jazzland.at',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:24,cat:'music',genre:'Jazz',
+   title:'Björn Meyer at Porgy & Bess',
+   subtitle:'Bass / improvisation · Porgy & Bess',
+   venue:'Porgy & Bess Jazz & Music Club',
+   dateDisplay:'May 29, 2026',timeDisplay:'8:00 PM',
+   sortDate:'2026-05-29',dates:['2026-05-29'],month:'may',
+   desc:'Innovative Swiss bassist and composer Björn Meyer brings his boundary-pushing improvisation to Porgy & Bess — one of Central Europe\'s most important jazz venues.',
+   infoUrl:'https://www.porgy.at/en/events/upcoming',ticketUrl:'https://www.porgy.at/en/events/upcoming',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:25,cat:'music',genre:'Rock / Poetry',
+   title:'Patti Smith Quartet at Arena Wien',
+   subtitle:'Wiener Festwochen · outdoor arena',
+   venue:'Arena Wien',
+   dateDisplay:'May 31, 2026',timeDisplay:'8:00 PM',
+   sortDate:'2026-05-31',dates:['2026-05-31'],month:'may',
+   desc:'Patti Smith and her Quartet at the legendary Arena Wien — a converted former slaughterhouse that has hosted 50 years of alternative and rock history. Her third and final Vienna appearance in the Festwochen.',
+   infoUrl:'https://www.festwochen.at/en/patti-smith-quartet',ticketUrl:'https://www.festwochen.at/en/patti-smith-quartet',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:26,cat:'music',genre:'Rock',
+   title:'Garbage at Wiener Stadthalle',
+   subtitle:'Alt-rock · major arena show',
+   venue:'Wiener Stadthalle',
+   dateDisplay:'June 8, 2026',timeDisplay:'7:30 PM',
+   sortDate:'2026-06-08',dates:['2026-06-08'],month:'jun',
+   desc:'Scottish-American alt-rock band Garbage, fronted by Shirley Manson, brings their hard-edged sound to Vienna\'s largest indoor arena. Classic \'90s alternative with a contemporary edge.',
+   infoUrl:'https://www.ticketmaster.at',ticketUrl:'https://www.viennaticketoffice.com/rockpop_en.php',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:27,cat:'music',genre:'World / Orchestral',
+   title:'Chineke! Orchestra at Konzerthaus',
+   subtitle:'Wiener Festwochen · Europe\'s first majority-POC orchestra',
+   venue:'Wiener Konzerthaus',
+   dateDisplay:'June 10, 2026',timeDisplay:'7:30 PM',
+   sortDate:'2026-06-10',dates:['2026-06-10'],month:'jun',
+   desc:'Europe\'s first professional symphony orchestra made up largely of musicians of colour performs as part of the Festwochen\'s 75th anniversary. A landmark concert celebrating diversity in classical music.',
+   infoUrl:'https://www.festwochen.at/en',ticketUrl:'https://www.festwochen.at/en',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:28,cat:'music',genre:'Pop / Rock',
+   title:'Zucchero at Wiener Stadthalle',
+   subtitle:'Italian pop-rock legend · arena show',
+   venue:'Wiener Stadthalle (Halle D)',
+   dateDisplay:'June 11, 2026',timeDisplay:'7:30 PM',
+   sortDate:'2026-06-11',dates:['2026-06-11'],month:'jun',
+   desc:'Italy\'s iconic rock and blues singer Zucchero in one of his trademark theatrical arena shows. Soulful hits spanning four decades of rock, soul, and gospel-influenced pop.',
+   infoUrl:'https://www.ticketmaster.at',ticketUrl:'https://www.viennaticketoffice.com/rockpop_en.php',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:29,cat:'music',genre:'Indie / Avant-garde',
+   title:'CocoRosie at WUK',
+   subtitle:'Experimental folk-hop · WUK cultural centre',
+   venue:'WUK, Währinger Straße 59',
+   dateDisplay:'June 12, 2026',timeDisplay:'8:00 PM',
+   sortDate:'2026-06-12',dates:['2026-06-12'],month:'jun',
+   desc:'The hauntingly original sister duo CocoRosie perform their signature blend of folk, hip-hop, and experimental sound at WUK — one of Europe\'s largest independent socio-cultural centres.',
+   infoUrl:'https://www.wuk.at',ticketUrl:'https://www.viennaticketoffice.com/rockpop_en.php',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:30,cat:'music',genre:'Jazz',
+   title:'David Six at Porgy & Bess',
+   subtitle:'Vienna jazz piano · Porgy & Bess',
+   venue:'Porgy & Bess Jazz & Music Club',
+   dateDisplay:'June 15, 2026',timeDisplay:'8:00 PM',
+   sortDate:'2026-06-15',dates:['2026-06-15'],month:'jun',
+   desc:'Austrian pianist and composer David Six presents his latest project at Porgy & Bess. Contemporary jazz with deep Viennese roots in one of Europe\'s finest club settings.',
+   infoUrl:'https://www.porgy.at/en/events/upcoming',ticketUrl:'https://www.porgy.at/en/events/upcoming',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:31,cat:'music',genre:'Pop',
+   title:'Alex Ubago at WUK',
+   subtitle:'Spanish singer-songwriter',
+   venue:'WUK',
+   dateDisplay:'June 19, 2026',timeDisplay:'8:00 PM',
+   sortDate:'2026-06-19',dates:['2026-06-19'],month:'jun',
+   desc:'Popular Spanish singer-songwriter Alex Ubago performs acoustic-leaning pop at WUK — one of Vienna\'s best mid-sized music venues in a former railway repair hall.',
+   infoUrl:'https://www.wuk.at',ticketUrl:'https://www.viennaticketoffice.com/rockpop_en.php',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:32,cat:'music',genre:'Dream-pop',
+   title:'Men I Trust at Arena Wien',
+   subtitle:'Dream-pop / shoegaze',
+   venue:'Arena Wien',
+   dateDisplay:'June 25, 2026',timeDisplay:'8:00 PM',
+   sortDate:'2026-06-25',dates:['2026-06-25'],month:'jun',
+   desc:'Canadian dream-pop trio Men I Trust perform their lush, hypnotic sound at Arena Wien — an iconic alternative venue housed in a converted former slaughterhouse south of the city centre.',
+   infoUrl:'https://www.arena.wien',ticketUrl:'https://www.viennaticketoffice.com/rockpop_en.php',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:33,cat:'music',genre:'Jazz',
+   title:'Pat Metheny at Wiener Konzerthaus',
+   subtitle:'Jazz guitar legend · 20 Grammy Awards',
+   venue:'Wiener Konzerthaus',
+   dateDisplay:'June 29, 2026',timeDisplay:'7:30 PM',
+   sortDate:'2026-06-29',dates:['2026-06-29'],month:'jun',
+   desc:'A rare Vienna appearance by the iconic American jazz guitarist Pat Metheny — one of the most decorated musicians in jazz history. A concert not to be missed by any jazz lover.',
+   infoUrl:'https://www.konzerthaus.at',ticketUrl:'https://www.viennaticketoffice.com/jazz_en.php',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  // ── CINEMA (Haydn Kino) ───────────────────────────────
+  {id:42,cat:'cinema',genre:'Sci-Fi / Action',
+   title:'The Mandalorian and Grogu -3D-',
+   subtitle:'Dir. Jon Favreau · 132 min · Pedro Pascal, Sigourney Weaver',
+   venue:'Haydn Kino (Saal A)',
+   dateDisplay:'May 20, 2026',timeDisplay:'18:00 & 20:30',
+   sortDate:'2026-05-20',dates:['2026-05-20'],month:'may',
+   desc:'The lone bounty hunter and his Force-sensitive companion face Imperial remnants and dangerous mercenaries. Stars Pedro Pascal, Sigourney Weaver, Jeremy Allen White. Shown in 3D. Note: Nonstop Kinoabo pass not valid (Disney).',
+   infoUrl:'https://www.haydnkino.at/Cinema/Movie?filmId=3153',ticketUrl:'https://www.haydnkino.at/Ticket/Reserve?prgId=130622&screenId=1',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:43,cat:'cinema',genre:'Horror',
+   title:'28 Years Later: The Bone Temple',
+   subtitle:'Dir. Nia DaCosta · 109 min · Ralph Fiennes · Coming soon',
+   venue:'Haydn Kino',
+   dateDisplay:'Coming soon — check haydnkino.at',timeDisplay:'TBC',
+   sortDate:'2026-05-28',dates:[],month:'may',
+   desc:'Sequel to the 28 Days Later saga — a haunted doctor becomes guardian of the Bone Temple, built from the remains of the infected. Stars Ralph Fiennes and Jack O\'Connell. Directed by Nia DaCosta. Age 16+. Tickets not yet on sale.',
+   infoUrl:'https://www.haydnkino.at/Cinema/Movie?filmId=3102',ticketUrl:'https://www.haydnkino.at/Cinema/Movie?filmId=3102',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:47,cat:'cinema',genre:'Concert Film / 3D',
+   title:'Billie Eilish: Hit Me Hard and Soft: The Tour -3D-',
+   subtitle:'Dir. James Cameron & Billie Eilish · 114 min · Coming soon',
+   venue:'Haydn Kino',
+   dateDisplay:'Coming soon — check haydnkino.at',timeDisplay:'TBC',
+   sortDate:'2026-05-29',dates:[],month:'may',
+   desc:'A 3D concert film documenting Eilish\'s Manchester tour shows, co-directed by Billie Eilish and James Cameron. An immersive, cinematic concert experience for fans of the two-time Grammy Artist of the Year. Nonstop Kinoabo valid.',
+   infoUrl:'https://www.haydnkino.at/Cinema/Movie?filmId=3183',ticketUrl:'https://www.haydnkino.at/Cinema/Movie?filmId=3183',
+   free:false,ongoing:false,closing:false,isNew:true},
+
+  {id:44,cat:'cinema',genre:'Animation / Event',
+   title:'The Amazing Digital Circus: The Last Act',
+   subtitle:'Dir. Gooseworx · 93 min · one-night cinema event',
+   venue:'Haydn Kino (Saal A)',
+   dateDisplay:'June 4, 2026',timeDisplay:'19:00 & 21:00',
+   sortDate:'2026-06-04',dates:['2026-06-04'],month:'jun',
+   desc:'The grand finale of the viral YouTube phenomenon — Episodes 8 & 9 including the exclusive cinema premiere of the final chapter. Pomni and the troupe face the ultimate glitch. A special one-night event; two screenings only.',
+   infoUrl:'https://www.haydnkino.at/Cinema/Movie?filmId=3198',ticketUrl:'https://www.haydnkino.at/Ticket/Reserve?prgId=130483&screenId=1',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:48,cat:'cinema',genre:'Musical / Sing-Along',
+   title:'Pitch Perfect (2013) — Sing-Along',
+   subtitle:'Special event screening · 112 min · age 10+',
+   venue:'Haydn Kino (Saal A)',
+   dateDisplay:'June 23, 2026',timeDisplay:'20:00',
+   sortDate:'2026-06-23',dates:['2026-06-23'],month:'jun',
+   desc:'Aca-awesome! The beloved collegiate a cappella comedy gets the full Haydn Kino sing-along treatment. Bring your voice and join the audience for an interactive screening of the 2012 classic. Tickets via haydnkino.at.',
+   infoUrl:'https://www.haydnkino.at/Cinema/Movie?filmId=2874',ticketUrl:'https://www.haydnkino.at/Ticket/Reserve?prgId=129881&screenId=1',
+   free:false,ongoing:false,closing:false,isNew:true},
+
+  {id:49,cat:'cinema',genre:'Musical / Cult / Sing-Along',
+   title:'The Rocky Horror Picture Show (1975) — Sing-Along',
+   subtitle:'Cult classic · 113 min · age 16+ · June 30',
+   venue:'Haydn Kino (Saal A)',
+   dateDisplay:'June 30, 2026',timeDisplay:'20:00',
+   sortDate:'2026-06-30',dates:['2026-06-30'],month:'jun',
+   desc:'The ultimate cult midnight movie experience — the Haydn Kino\'s legendary annual sing-along of the Rocky Horror Picture Show. Dress up, shout back at the screen, and join the Time Warp with a full house. A Vienna summer institution. Tickets at haydnkino.at.',
+   infoUrl:'https://www.haydnkino.at/Cinema/Movie?filmId=1704',ticketUrl:'https://www.haydnkino.at/Ticket/Reserve?prgId=130026&screenId=1',
+   free:false,ongoing:false,closing:false,isNew:true},
+
+  {id:46,cat:'cinema',genre:'Info',
+   title:'Haydn Kino — Weekly Schedule Updates',
+   subtitle:'New programme posted every Monday evening',
+   venue:'Haydn Kino · Mariahilferstraße 57 · U3 Neubaugasse',
+   dateDisplay:'New schedule every Mon evening for Thu–Wed',timeDisplay:'Check haydnkino.at',
+   sortDate:'2026-06-30',dates:[],month:'both',
+   desc:'The Haydn Kino releases its full weekly programme every Monday evening for the following Thursday–Wednesday period. Check haydnkino.at regularly for newly added English-language films. All films in original English, no subtitles.',
+   infoUrl:'https://www.haydnkino.at/Cinema/Overview',ticketUrl:'https://www.haydnkino.at/Cinema/Overview',
+   free:false,ongoing:true,closing:false,isNew:false},
+
+  // ── OUTDOOR & FESTIVALS ───────────────────────────────
+  {id:50,cat:'outdoor',genre:'',
+   title:'Festwochen Opening Concert — Patti Smith · FREE',
+   subtitle:'Heldenplatz · 75th anniversary · open-air',
+   venue:'Heldenplatz (Heroes\' Square)',
+   dateDisplay:'May 22, 2026',timeDisplay:'9:20 PM',
+   sortDate:'2026-05-22',dates:['2026-05-22'],month:'may',
+   desc:'Patti Smith performs with the Schmusechor and Gods Republic at Vienna\'s grandest square for the Festwochen\'s 75th anniversary opening. Free admission. Live on ORF II and online stream. Accessible in Austrian sign language.',
+   infoUrl:'https://www.festwochen.at/en/opening-2026',ticketUrl:null,
+   free:true,ongoing:false,closing:false,isNew:false},
+
+  {id:51,cat:'outdoor',genre:'',
+   title:'Summer Night Concert — Vienna Philharmonic · FREE',
+   subtitle:'Schönbrunn Park · Viotti conducts · Bryn Terfel solos · CONFIRMED',
+   venue:'Schönbrunn Palace Park',
+   dateDisplay:'June 19, 2026 — CONFIRMED',timeDisplay:'9:30 PM (at sunset)',
+   sortDate:'2026-06-19',dates:['2026-06-19'],month:'jun',
+   desc:'Now confirmed: the Vienna Philharmonic performs free for up to 100,000 people on the illuminated lawns of Schönbrunn Palace. Conductor: Lorenzo Viotti. Soloist: Sir Bryn Terfel (Welsh bass-baritone). Broadcast internationally. Arrive 2+ hours early.',
+   infoUrl:'https://www.wienerphilharmoniker.at/en/summernightconcert',ticketUrl:null,
+   free:true,ongoing:false,closing:false,isNew:true},
+
+  {id:52,cat:'outdoor',genre:'',
+   title:'AMADEUS Festival Vienna',
+   subtitle:'4-night open-air classical festival',
+   venue:'Former Semmelweis Women\'s Clinic',
+   dateDisplay:'June 25–28, 2026',timeDisplay:'Evening performances',
+   sortDate:'2026-06-25',dates:['2026-06-25','2026-06-26','2026-06-27','2026-06-28'],month:'jun',
+   desc:'A magical open-air classical music festival in the evocative historical grounds of a former Vienna clinic. Four nights of orchestral and chamber music under the stars in one of the city\'s most atmospheric outdoor settings.',
+   infoUrl:'https://www.visitingvienna.com/entertainment/june/',ticketUrl:'https://www.visitingvienna.com/entertainment/june/',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:53,cat:'outdoor',genre:'',
+   title:'Prater Picnic — Vienna Symphony · FREE',
+   subtitle:'Kaiserwiese · beside the Riesenrad',
+   venue:'Kaiserwiese, Vienna Prater',
+   dateDisplay:'June 26 & 27, 2026',timeDisplay:'7:30 PM',
+   sortDate:'2026-06-26',dates:['2026-06-26','2026-06-27'],month:'jun',
+   desc:'Bring a picnic blanket to the Kaiserwiese meadow beside the iconic 1897 Riesenrad. The Vienna Symphony performs under Petr Popelka — a joyful, relaxed Viennese summer evening for everyone.',
+   infoUrl:'https://www.wienersymphoniker.at/en',ticketUrl:null,
+   free:true,ongoing:false,closing:false,isNew:false},
+
+  {id:54,cat:'outdoor',genre:'',
+   title:'Kino am Dach — Rooftop Open-Air Cinema',
+   subtitle:'Vienna City Library rooftop · all June',
+   venue:'Hauptbücherei am Gürtel (Rooftop)',
+   dateDisplay:'Throughout June 2026',timeDisplay:'Evenings at dusk',
+   sortDate:'2026-06-01',dates:[],month:'jun',
+   desc:'Vienna\'s beloved open-air cinema on the rooftop of the main city library. Films in original language — many in English or with English subtitles — with stunning views of Vienna\'s skyline.',
+   infoUrl:'https://www.visitingvienna.com/entertainment/june/',ticketUrl:'https://www.visitingvienna.com/entertainment/june/',
+   free:false,ongoing:true,closing:false,isNew:false},
+
+  // ── CULTURAL EVENTS ───────────────────────────────────
+  {id:60,cat:'cultural',genre:'',
+   title:'Wiener Festwochen 2026 — 75th Anniversary',
+   subtitle:'May 15–June 21 · 35 productions · 13 world premieres',
+   venue:'Citywide — multiple venues',
+   dateDisplay:'May 15 – June 21, 2026',timeDisplay:'Various',
+   sortDate:'2026-05-17',dates:[],month:'both',
+   desc:'Vienna\'s great cultural festival turns 75 with theatre, music, and performance including 13 world premieres. Key events: The Tempest by Robert Wilson (Burgtheater, June 5), Parsifal (MuseumsQuartier, June 15), Chineke! Orchestra (June 10). Full English programme at festwochen.at.',
+   infoUrl:'https://www.festwochen.at/en/home',ticketUrl:'https://www.festwochen.at/en/home',
+   free:false,ongoing:true,closing:false,isNew:false},
+
+  {id:63,cat:'cultural',genre:'',
+   title:'The Tempest — Robert Wilson (Burgtheater)',
+   subtitle:'Wiener Festwochen · Shakespeare',
+   venue:'Burgtheater',
+   dateDisplay:'June 5, 2026',timeDisplay:'7:30 PM',
+   sortDate:'2026-06-05',dates:['2026-06-05'],month:'jun',
+   desc:'Shakespeare\'s The Tempest staged by visionary director Robert Wilson — master of slow, dreamlike visual theatre. At Vienna\'s magnificent Burgtheater, the house of German-language drama. English surtitles expected.',
+   infoUrl:'https://www.festwochen.at/en',ticketUrl:'https://www.festwochen.at/en',
+   free:false,ongoing:false,closing:false,isNew:false},
+
+  {id:62,cat:'cultural',genre:'',
+   title:'Vienna Pride — Rainbow Parade',
+   subtitle:'300,000+ participants · city centre · FREE',
+   venue:'Vienna City Centre (Ringstrasse)',
+   dateDisplay:'June 13, 2026',timeDisplay:'All day (parade in afternoon)',
+   sortDate:'2026-06-13',dates:['2026-06-13'],month:'jun',
+   desc:'One of Europe\'s largest Pride parades draws 300,000+ participants along the Ringstrasse. Free to watch anywhere along the route. The broader Vienna Pride festival runs for weeks with film, art, and cultural events.',
+   infoUrl:'https://www.viennapride.at',ticketUrl:null,
+   free:true,ongoing:false,closing:false,isNew:false},
+
+  // ── EXHIBITIONS ───────────────────────────────────────
+  {id:70,cat:'exhibit',genre:'',
+   title:'Honoré Daumier: Art & Satire',
+   subtitle:'Albertina · CLOSING May 25 — 8 days left ⚠️',
+   venue:'Albertina Museum',
+   dateDisplay:'Now – May 25, 2026 ⚠️',timeDisplay:'Daily 10:00–18:00 (Wed & Fri until 21:00)',
+   sortDate:'2026-05-17',dates:[],month:'may',
+   desc:'~200 works by the 19th century\'s sharpest satirical eye — caricatures, lithographs, and drawings skewering politicians and bourgeois society. Brilliant and wickedly funny. Only 8 days left — don\'t miss it.',
+   infoUrl:'https://www.albertina.at/en/exhibitions/',ticketUrl:'https://www.albertina.at/en/visit/',
+   free:false,ongoing:true,closing:true,isNew:false},
+
+  {id:71,cat:'exhibit',genre:'',
+   title:'Gustave Courbet: Realist and Rebel',
+   subtitle:'Leopold Museum · closes June 21',
+   venue:'Leopold Museum, MuseumsQuartier',
+   dateDisplay:'Now – June 21, 2026',timeDisplay:'Thu–Mon 10:00–18:00 (Wed until 21:00)',
+   sortDate:'2026-05-17',dates:[],month:'both',
+   desc:'Austria\'s first major monographic exhibition for Courbet — the uncompromising rebel who defied the Paris Salon with provocative self-portraits, scandalous nudes, and dramatic seascapes. Over 80 works.',
+   infoUrl:'https://www.leopoldmuseum.org/en/exhibitions/current',ticketUrl:'https://www.wien-tickets.com/leopold-museum/',
+   free:false,ongoing:true,closing:true,isNew:false},
+
+  {id:72,cat:'exhibit',genre:'',
+   title:'Canaletto & Bellotto: 18th-Century Cityscapes',
+   subtitle:'Kunsthistorisches Museum · until Sept 6',
+   venue:'Kunsthistorisches Museum',
+   dateDisplay:'Now – September 6, 2026',timeDisplay:'Tue–Sun 10:00–18:00 (Thu until 21:00)',
+   sortDate:'2026-05-17',dates:[],month:'both',
+   desc:'Dazzling vedute of Vienna, Venice, London, and Dresden by Canaletto and his nephew Bellotto — many works never before outside their home collections. Housed in one of the world\'s most magnificent museum buildings.',
+   infoUrl:'https://www.khm.at/en',ticketUrl:'https://www.khm.at/en/visit',
+   free:false,ongoing:true,closing:false,isNew:false},
+
+  {id:73,cat:'exhibit',genre:'',
+   title:'Helga Philipp — Op Art & Kinetic Works',
+   subtitle:'Albertina · May 1 – September 20',
+   venue:'Albertina Museum',
+   dateDisplay:'May 1 – September 20, 2026',timeDisplay:'Daily 10:00–18:00 (Wed & Fri until 21:00)',
+   sortDate:'2026-05-17',dates:[],month:'both',
+   desc:'First major retrospective for Viennese op-art pioneer Helga Philipp (1939–2002). Works across painting, print, textile, and installation — a rediscovery of one of Austria\'s most original postwar artists.',
+   infoUrl:'https://www.albertina.at/en/exhibitions/',ticketUrl:'https://www.albertina.at/en/visit/',
+   free:false,ongoing:true,closing:false,isNew:false},
+
+  {id:74,cat:'exhibit',genre:'',
+   title:'Otto Meets Albertina',
+   subtitle:'Albertina · Opens June 3 → Jan 10, 2027',
+   venue:'Albertina Museum',
+   dateDisplay:'June 3, 2026 – January 10, 2027',timeDisplay:'Daily 10:00–18:00 (Wed & Fri until 21:00)',
+   sortDate:'2026-06-03',dates:['2026-06-03'],month:'jun',
+   desc:'German comedian and artist Otto Waalkes playfully reimagines famous masterpieces from the Albertina\'s collection. Witty, accessible, and surprisingly moving — wonderful for all ages.',
+   infoUrl:'https://www.albertina.at/en/exhibitions/',ticketUrl:'https://www.albertina.at/en/visit/',
+   free:false,ongoing:false,closing:false,isNew:false},
+];
+
+// ── SITES ─────────────────────────────────────────────
+const SITES = [
+  {name:"St. Stephen's Cathedral (Stephansdom)",icon:'⛪',hours:'⏰ Daily 6 AM – 10 PM · Paid tours: 9:00–11:30 & 13:00–16:30',
+   desc:"Vienna's Gothic masterpiece. Climb the 343-step South Tower free for panoramic views, or take the elevator up the North Tower. Catacombs tours available. Cathedral nave always free to enter.",
+   tip:'💡 The South Tower climb is completely free and rivals any paid viewpoint in the city.',
+   infoUrl:'https://www.stephanskirche.at',ticketUrl:'https://www.getyourguide.com/st-stephen-s-cathedral-vienna-l3942/',price:'Free · Tours from €6'},
+  {name:'Schönbrunn Palace & Gardens',icon:'🏛️',hours:'⏰ Daily 9:30 AM – 5:30 PM (through June 30)',
+   desc:"UNESCO World Heritage Site — the Habsburg imperial summer palace with 1,441 rooms. State rooms, vast formal gardens, and the Gloriette viewpoint. Book online; it frequently sells out on sunny days.",
+   tip:'💡 The formal gardens are always FREE. Budget 3–4 hours for palace + gardens + Gloriette.',
+   infoUrl:'https://www.schoenbrunn.at/en/',ticketUrl:'https://www.schoenbrunn.at/en/tickets-and-prices/all-tickets-tours',price:'From €28 (State Apartments)'},
+  {name:'Upper & Lower Belvedere',icon:'🎨',hours:'⏰ Daily 10 AM – 6 PM (Thu until 9 PM)',
+   desc:"Two Baroque palaces in formal gardens. The Upper Belvedere holds Klimt's \"The Kiss.\" The Lower Belvedere features Baroque museums. The gardens between are free and lovely.",
+   tip:'💡 Book timed entry online — Klimt\'s "The Kiss" draws big crowds. Allow at least 2 hours.',
+   infoUrl:'https://www.belvedere.at/en',ticketUrl:'https://www.wien-tickets.com/belvedere-palace/',price:'From ~€16 (Upper Belvedere)'},
+  {name:'Kunsthistorisches Museum (KHM)',icon:'🏺',hours:'⏰ Tue–Sun 10 AM – 6 PM (Thu until 9 PM)',
+   desc:"The Habsburg imperial art collection — Raphael, Vermeer, Velázquez, Bruegel, Rubens. Currently: Canaletto & Bellotto (until Sept 6). The building's grand staircase and coffered ceilings are themselves masterpieces.",
+   tip:'💡 Allow 3+ hours. Thursday evenings are calmer and stay open until 9 PM.',
+   infoUrl:'https://www.khm.at/en',ticketUrl:'https://www.khm.at/en/visit',price:'€21 adults'},
+  {name:'Albertina Museum',icon:'🖼️',hours:'⏰ Daily 10 AM – 6 PM (Wed & Fri until 9 PM)',
+   desc:"World-class graphic arts — Dürer, Raphael, Monet, Picasso. Imperial palace beside the Opera House. Current: Helga Philipp (May–Sept), Daumier (until May 25 — 8 days left!), Otto meets Albertina (from June 3).",
+   tip:'💡 Albertina MODERN at Karlsplatz is free and shows cutting-edge contemporary art.',
+   infoUrl:'https://www.albertina.at/en',ticketUrl:'https://www.albertina.at/en/visit/',price:'€18.90 adults'},
+  {name:'Leopold Museum — MuseumsQuartier',icon:'🖌️',hours:'⏰ Thu–Mon 10 AM – 6 PM (Wed until 9 PM) · Closed Tue',
+   desc:"World's largest Egon Schiele collection, plus Klimt, Kokoschka, Vienna Secession. Current: Courbet (until June 21). Located in the lively MuseumsQuartier — Vienna's best free public courtyard is right outside.",
+   tip:'💡 The MQ courtyard is one of Vienna\'s best free outdoor spaces — great for a break between museums.',
+   infoUrl:'https://www.leopoldmuseum.org/en',ticketUrl:'https://www.wien-tickets.com/leopold-museum/',price:'€15 adults'},
+  {name:'Hofburg Imperial Palace',icon:'👑',hours:'⏰ Daily 9 AM – 5:30 PM (Imperial Apartments)',
+   desc:"The Habsburg winter palace in the heart of the city — Imperial Apartments, Sisi Museum, Imperial Silver Collection, and the Kaisergruft (Imperial Crypt). Explore the grand courtyards free at any time.",
+   tip:'💡 The Sisi Ticket bundles Hofburg + Schönbrunn + Imperial Furniture Collection at a discount.',
+   infoUrl:'https://www.hofburg-wien.at/en/',ticketUrl:'https://www.hofburg-wien.at/en/plan-your-visit/tickets/',price:'From €19.90 (Imperial Apartments)'},
+  {name:'Vienna State Opera — House Tours',icon:'🎭',hours:'⏰ Daily guided tours (times vary)',
+   desc:"One of the world's most beautiful opera houses, built 1861–69. English-language tours through the grand foyer, marble staircases, and auditorium. Standing room (Stehplatz) tickets go on sale 80 min before curtain.",
+   tip:'💡 Stehplatz tickets for live performances cost just €3–10 — the most authentic Vienna experience possible.',
+   infoUrl:'https://www.wiener-staatsoper.at/en/visit/tours/',ticketUrl:'https://www.wiener-staatsoper.at/en/visit/tours/',price:'~€13 tour · €3–10 standing room'},
+];
+
+// ── 3-DAY SCHEDULE (May 17–19) ────────────────────────
+// Today: Sunday May 17 (last day of weekend), Mon May 18, Tue May 19 (Patti Smith!)
+const THREE_DAY = [
+  {
+    label:'Today',dayName:'Sunday, May 17',
+    dayNote:'Last day of the weekend — Imperial Vienna day',
+    items:[
+      {time:'9:30', name:'Schönbrunn Palace',detail:'Book tickets online · arrive before the tour groups',free:false,hot:false,url:'https://www.schoenbrunn.at/en/tickets-and-prices/all-tickets-tours'},
+      {time:'12:00',name:'Belvedere Gardens stroll',detail:'Free walk between Upper & Lower Belvedere palaces',free:true,hot:false,url:'https://www.belvedere.at/en'},
+      {time:'14:00',name:'Gustave Courbet at Leopold Museum',detail:'Closes June 21 · MuseumsQuartier',free:false,hot:false,url:'https://www.leopoldmuseum.org/en/exhibitions/current'},
+      {time:'17:00',name:'Vienna Philharmonic — Riccardo Muti',detail:'Musikverein Golden Hall · final Sunday performance',free:false,hot:true,url:'https://www.wienerphilharmoniker.at/en/konzerte'},
+      {time:'20:30',name:'Mozart at Schönbrunn Orangery',detail:'Period costume concert · imperial setting',free:false,hot:false,url:'https://www.mozart.co.at'},
+    ],
+    tip:'Tonight is the last chance to catch Muti and the Vienna Philharmonic this cycle. Book Schönbrunn online before visiting — it sells out on sunny Sundays.'
+  },
+  {
+    label:'Tomorrow',dayName:'Monday, May 18',
+    dayNote:'Quieter museum day · New Haydn Kino schedule posted tonight',
+    items:[
+      {time:'10:00',name:'Daumier at Albertina',detail:'Closes May 25 — only 7 days left!',free:false,hot:true,url:'https://www.albertina.at/en/exhibitions/'},
+      {time:'13:00',name:'Naschmarkt lunch',detail:'Vienna\'s famous open-air market — 5 min from Albertina',free:true,hot:false,url:'https://www.naschmarkt-vienna.com'},
+      {time:'15:00',name:'Kunsthistorisches Museum',detail:'Canaletto & Bellotto · Imperial art collections · quieter Mondays',free:false,hot:false,url:'https://www.khm.at/en'},
+      {time:'18:00',name:'Haydn Kino — new schedule posted tonight',detail:'Check haydnkino.at after 8 PM for new Thu–Wed listings',free:false,hot:false,url:'https://www.haydnkino.at/Cinema/Overview'},
+      {time:'21:00',name:'Jazzland Vienna',detail:'Live jazz in the stone cellar · 6 nights a week',free:false,hot:false,url:'https://www.jazzland.at'},
+    ],
+    tip:'Mondays are one of the best days for museums — fewer visitors than weekends. The new Haydn Kino programme for next week is posted Monday evening around 8 PM.'
+  },
+  {
+    label:'Tuesday',dayName:'Tuesday, May 19',
+    dayNote:'⭐ Patti Smith tonight at Theater Akzent!',
+    items:[
+      {time:'10:00',name:'Daumier at Albertina',detail:'Closes in 6 days — see it today if you missed yesterday',free:false,hot:true,url:'https://www.albertina.at/en/exhibitions/'},
+      {time:'11:00',name:'Helga Philipp at Albertina',detail:'Op-art & kinetic works · same ticket · open until Sept',free:false,hot:false,url:'https://www.albertina.at/en/exhibitions/'},
+      {time:'14:00',name:'St. Stephen\'s Cathedral',detail:'Free south tower climb · 343 steps · panoramic views',free:true,hot:false,url:'https://www.stephanskirche.at'},
+      {time:'18:00',name:'Vienna Symphony at Konzerthaus',detail:'Hayato Sumino · Ravel Piano Concerto & Beethoven 5',free:false,hot:false,url:'https://www.wienersymphoniker.at/en/calendar'},
+      {time:'20:00',name:'⭐ PATTI SMITH at Theater Akzent',detail:'Wiener Festwochen · intimate venue · book now',free:false,hot:true,url:'https://www.festwochen.at/en/patti-smith-quartet'},
+    ],
+    tip:'Tuesday May 19 is an exceptional evening — you can choose between Patti Smith at the intimate Theater Akzent (Festwochen) or the Vienna Symphony at Konzerthaus. Both start around 7:30–8 PM.'
+  },
+];
+
+// ════════════════════════════════════════════════════════
+//  LIKES SYSTEM (localStorage — persists across sessions)
+// ════════════════════════════════════════════════════════
+const LIKES_KEY='vienna_guide_likes_v2';
+let likes=new Set(JSON.parse(localStorage.getItem(LIKES_KEY)||'[]'));
+function saveLikes(){localStorage.setItem(LIKES_KEY,JSON.stringify([...likes]))}
+function toggleLike(id,e){
+  e.stopPropagation();
+  likes.has(id)?likes.delete(id):likes.add(id);
+  saveLikes();
+  document.querySelectorAll(`.like-btn[data-id="${id}"]`).forEach(b=>{
+    b.classList.toggle('liked',likes.has(id));
+    b.innerHTML=likes.has(id)?'❤️ Saved':'🤍 Save';
+  });
+  updateLikeCount();
+  if(document.getElementById('panel-likes').classList.contains('active'))renderLikesPanel();
+}
+function updateLikeCount(){document.getElementById('likes-count').textContent=likes.size}
+function sendLikesSummary(){
+  const evs=EVENTS.filter(e=>likes.has(e.id));
+  const s=evs.map(e=>`- ${e.title} (${e.cat})`).join('\n');
+  sendPrompt(`Based on my saved Vienna events, what else might I enjoy? My saved events:\n${s}`);
+}
+
+// ════════════════════════════════════════════════════════
+//  RENDER
+// ════════════════════════════════════════════════════════
+function makeBadges(ev){
+  let h=`<span class="badge b-venue">${ev.venue.split(',')[0].split('—')[0].split('·')[0].trim()}</span>`;
+  if(ev.genre) h+=`<span class="badge b-gen">${ev.genre}</span>`;
+  if(ev.isNew) h+=`<span class="badge b-new">Updated</span>`;
+  if(ev.free)  h+=`<span class="badge b-free">Free</span>`;
+  else         h+=`<span class="badge b-tix">Tickets</span>`;
+  if(ev.ongoing)h+=`<span class="badge b-ong">Ongoing</span>`;
+  if(ev.closing)h+=`<span class="badge b-cls">Closing Soon</span>`;
+  return h;
+}
+function makeCard(ev){
+  const liked=likes.has(ev.id);
+  const foot=[];
+  if(ev.infoUrl) foot.push(`<a class="cl" href="${ev.infoUrl}" target="_blank">ℹ️ Details</a>`);
+  if(ev.ticketUrl&&!ev.free) foot.push(`<a class="cl p" href="${ev.ticketUrl}" target="_blank">🎟 Tickets</a>`);
+  if(ev.ticketUrl&&ev.free)  foot.push(`<a class="cl p" href="${ev.ticketUrl}" target="_blank">📋 Info</a>`);
+  const lb=`<button class="like-btn${liked?' liked':''}" data-id="${ev.id}" onclick="toggleLike(${ev.id},event)">${liked?'❤️ Saved':'🤍 Save'}</button>`;
+  return `<div class="card cat-${ev.cat}" data-id="${ev.id}" data-month="${ev.month}" data-free="${ev.free}" data-ongoing="${ev.ongoing}" data-closing="${ev.closing}">
+    <div class="cs"></div>
+    <div class="cb">
+      <div class="badges">${makeBadges(ev)}</div>
+      <div class="ct">${ev.title}</div>
+      ${ev.subtitle?`<div class="csub">${ev.subtitle}</div>`:''}
+      <div class="cw"><span class="wi">📅</span><span class="cw-t"><strong>${ev.dateDisplay}</strong>${ev.timeDisplay?` &nbsp;·&nbsp; ${ev.timeDisplay}`:''}</span></div>
+      <div class="cd">${ev.desc}</div>
+    </div>
+    <div class="cf">${foot.join('')}${lb}</div>
+  </div>`;
+}
+function makeSiteCard(s){
+  return `<div class="sc">
+    <div class="sc-top"><span class="sc-icon">${s.icon}</span><span class="sc-name">${s.name}</span></div>
+    <div class="sc-hrs">${s.hours}</div>
+    <div class="sc-desc">${s.desc}</div>
+    <div class="sc-tip">${s.tip}</div>
+    <div class="sc-links">
+      ${s.infoUrl?`<a class="cl" href="${s.infoUrl}" target="_blank">ℹ️ Info</a>`:''}
+      ${s.ticketUrl?`<a class="cl p" href="${s.ticketUrl}" target="_blank">🎟 Tickets / Tours</a>`:''}
+      ${s.price?`<span style="font-family:sans-serif;font-size:.7rem;color:var(--muted);align-self:center;margin-left:4px">${s.price}</span>`:''}
+    </div>
+  </div>`;
+}
+function sortedByCat(cat){
+  return EVENTS.filter(e=>e.cat===cat).sort((a,b)=>a.sortDate.localeCompare(b.sortDate));
+}
+function populate(){
+  const cats=['opera','music','cinema','outdoor','cultural','exhibit'];
+  // All panel
+  cats.forEach(cat=>{
+    const g=document.getElementById(`g-all-${cat}`); if(!g)return;
+    const evs=sortedByCat(cat);
+    g.innerHTML=evs.map(makeCard).join('')||'<div class="no-ev">No upcoming events in this category.</div>';
+  });
+  // Individual panels
+  const pm={opera:'g-opera',music:'g-music',cinema:'g-cinema',outdoor:'g-outdoor',cultural:'g-cultural',exhibit:'g-exhibit'};
+  Object.entries(pm).forEach(([cat,gid])=>{
+    const g=document.getElementById(gid);if(!g)return;
+    const evs=sortedByCat(cat);
+    g.innerHTML=evs.map(makeCard).join('');
+    const c=document.getElementById(`cnt-${cat}`);
+    if(c)c.textContent=`${evs.length} event${evs.length!==1?'s':''}`;
+  });
+  // Sites
+  document.getElementById('g-sites').innerHTML=SITES.map(makeSiteCard).join('');
+  // 3-day
+  render3Day();
+  updateLikeCount();
+}
+function render3Day(){
+  document.getElementById('day-grid-content').innerHTML=THREE_DAY.map(day=>`
+    <div class="day-col">
+      <div class="day-head">
+        <div class="day-name">${day.dayName} <span style="opacity:.7;font-weight:400;font-size:.78rem">${day.label}</span></div>
+        <div class="day-note">${day.dayNote}</div>
+      </div>
+      <div class="day-items">
+        ${day.items.map(it=>`<div class="day-item">
+          <span class="di-time">${it.time}</span>
+          <div><div class="di-name"><a href="${it.url||'#'}" target="_blank">${it.name}</a>${it.free?'<span class="di-free">Free</span>':''}${it.hot?'<span class="di-hot">Hot</span>':''}</div>
+          <div class="di-detail">${it.detail}</div></div>
+        </div>`).join('')}
+      </div>
+      ${day.tip?`<div class="day-tip">💡 ${day.tip}</div>`:''}
+    </div>`).join('');
+}
+function toggleThreeDay(){
+  const body=document.getElementById('three-day-body');
+  const chev=document.getElementById('tdt-chev');
+  const open=body.classList.toggle('open');
+  chev.classList.toggle('open',open);
+  document.getElementById('tdt-sub').textContent=open?'Curated schedule · Click to collapse ▴':'Curated schedule · Click to expand ▾';
+}
+function renderLikesPanel(){
+  const evs=EVENTS.filter(e=>likes.has(e.id)).sort((a,b)=>a.sortDate.localeCompare(b.sortDate));
+  const empty=document.getElementById('likes-empty');
+  const sh=document.getElementById('likes-sh');
+  const grid=document.getElementById('g-likes');
+  const acts=document.getElementById('likes-actions');
+  const cnt=document.getElementById('cnt-likes');
+  if(evs.length===0){empty.style.display='';sh.style.display='none';grid.innerHTML='';acts.style.display='none';}
+  else{empty.style.display='none';sh.style.display='flex';acts.style.display='';cnt.textContent=`${evs.length} saved`;grid.innerHTML=evs.map(makeCard).join('');}
+  // Profile
+  const cc={};const fc={free:0,paid:0};
+  evs.forEach(ev=>{cc[ev.cat]=(cc[ev.cat]||0)+1;ev.free?fc.free++:fc.paid++;});
+  const cl={opera:'Classical & Opera',music:'Jazz & Contemporary',cinema:'Cinema',outdoor:'Outdoor Events',cultural:'Cultural Events',exhibit:'Art & Exhibitions'};
+  document.getElementById('profile-cats').innerHTML=Object.entries(cc).sort((a,b)=>b[1]-a[1]).map(([c,n])=>`<span class="profile-cat">${cl[c]||c} ×${n}</span>`).join('');
+  const ins=[];
+  if((cc.opera||0)>=2)ins.push('a classical music and opera lover');
+  if((cc.music||0)>=2)ins.push('a fan of live jazz and contemporary music');
+  if((cc.cinema||0)>=2)ins.push('a film enthusiast');
+  if((cc.outdoor||0)>=2)ins.push('drawn to outdoor events');
+  if((cc.exhibit||0)>=2)ins.push('an art and museum lover');
+  if(fc.free>=2)ins.push('keen on free events');
+  document.getElementById('profile-text').textContent=ins.length===0
+    ?`${evs.length} event${evs.length!==1?'s':''} saved. Save more to build your profile!`
+    :`Based on your saves: you appear to be ${ins.join(', and ')}. ${evs.length} event${evs.length!==1?'s':''} saved.`;
+}
+// ── TABS ──
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    const p=document.getElementById('panel-'+tab.dataset.panel);
+    if(p){p.classList.add('active');if(tab.dataset.panel==='likes')renderLikesPanel();}
+  });
+});
+// ── FILTERS ──
+document.addEventListener('click',e=>{
+  const btn=e.target.closest('.fb');if(!btn)return;
+  const bar=btn.closest('.fbar');
+  bar.querySelectorAll('.fb').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const f=btn.dataset.filter;
+  const panel=btn.closest('.panel');if(!panel)return;
+  panel.querySelectorAll('.eg').forEach(grid=>{
+    grid.querySelectorAll('.card').forEach(card=>{
+      let show=true;
+      if(f==='may')    show=card.dataset.month==='may'||card.dataset.month==='both';
+      if(f==='jun')    show=card.dataset.month==='jun'||card.dataset.month==='both';
+      if(f==='free')   show=card.dataset.free==='true';
+      if(f==='ongoing')show=card.dataset.ongoing==='true';
+      if(f==='closing')show=card.dataset.closing==='true';
+      card.classList.toggle('hidden',!show);
+    });
+  });
+});
+// ── SEND PROMPT ──
+function sendPrompt(t){
+  if(window.cowork&&window.cowork.sendPrompt)window.cowork.sendPrompt(t);
+  else alert('Paste into chat:\n\n'+t);
+}
+// ── INIT ──
+populate();
+// ── SERVICE WORKER ──
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .catch(err => console.warn('SW registration failed:', err));
+  });
+}
+</script>
+</body>
+</html>
