@@ -203,7 +203,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
     <div class="tdt-left">
       <span class="tdt-badge" id="weekend-badge">Next 3 Days</span>
       <div>
-        <div class="tdt-title" id="three-day-title">May 26–28, 2026 — Patti Smith at Arena Wien this Sunday!</div>
+        <div class="tdt-title" id="three-day-title">May 30 – June 1, 2026 — Patti Smith at Arena Wien TOMORROW!</div>
         <div class="tdt-subtitle" id="tdt-sub">Curated schedule · Click to expand ▾</div>
       </div>
     </div>
@@ -340,12 +340,42 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 <script>
 // ════════════════════════════════════════════════════════
 //  DATA — update this block to refresh the dashboard
-//  Last data refresh: May 26, 2026
+//  Last data refresh: May 30, 2026
 // ════════════════════════════════════════════════════════
 
 const EVENTS = [
 
   // ── OPERA & CLASSICAL ─────────────────────────────────
+  {id:10,cat:'opera',genre:'',
+   title:'Carmen — Bizet · Vienna State Opera',
+   subtitle:'Dir. Calixto Bieito · Cond. Lorenzo Viotti · Nicole Car',
+   venue:'Wiener Staatsoper',
+   dateDisplay:'June 1, 3, 5, 8 & 11, 2026',timeDisplay:'7:00 PM (June 11: 7:30 PM)',
+   sortDate:'2026-06-01',dates:['2026-06-01','2026-06-03','2026-06-05','2026-06-08','2026-06-11'],month:'jun',
+   desc:'Bizet\'s most-performed opera in Calixto Bieito\'s internationally acclaimed production, set in Ceuta with visceral passion and danger. Conducted by Lorenzo Viotti. Cast includes Nicole Car (Micaëla), Arsen Soghomonyan (Don José), Violeta Urmana, and Monika Bohinec. English surtitles. Five performances.',
+   infoUrl:'https://www.wiener-staatsoper.at/en/calendar/detail/carmen/',ticketUrl:'https://www.wiener-staatsoper.at/en/calendar/detail/carmen/',
+   free:false,ongoing:false,closing:false,isNew:true},
+
+  {id:12,cat:'opera',genre:'',
+   title:'La Clemenza di Tito — Mozart · New Production',
+   subtitle:'Dir. Jan Lauwers · Vienna State Opera',
+   venue:'Wiener Staatsoper',
+   dateDisplay:'June 21, 25, 27 & 28, 2026',timeDisplay:'7:00 PM',
+   sortDate:'2026-06-21',dates:['2026-06-21','2026-06-25','2026-06-27','2026-06-28'],month:'jun',
+   desc:'Mozart\'s final opera seria in a new production by the visionary Belgian director Jan Lauwers. A tale of imperial mercy and loyalty — with stunning staging and vocal fireworks. English surtitles.',
+   infoUrl:'https://www.wiener-staatsoper.at/en/calendar/detail/la-clemenza-di-tito/',ticketUrl:'https://www.wiener-staatsoper.at/en/calendar/detail/la-clemenza-di-tito/',
+   free:false,ongoing:false,closing:false,isNew:true},
+
+  {id:11,cat:'opera',genre:'',
+   title:'Die Zauberflöte — Mozart · The Magic Flute',
+   subtitle:'Dir. Barbora Horáková · Vienna State Opera',
+   venue:'Wiener Staatsoper',
+   dateDisplay:'June 22, 24, 25, 27 & 28, 2026',timeDisplay:'7:00 PM',
+   sortDate:'2026-06-22',dates:['2026-06-22','2026-06-24','2026-06-25','2026-06-27','2026-06-28'],month:'jun',
+   desc:'Mozart\'s enchanting fairy-tale opera in Barbora Horáková\'s acclaimed new production — a fantastical journey from haunted house to coal cellar to gentleman\'s club. Magical staging, beloved arias. English surtitles. Perfect first opera for newcomers.',
+   infoUrl:'https://www.wiener-staatsoper.at/en/calendar/detail/die-zauberfloete/',ticketUrl:'https://www.wiener-staatsoper.at/en/calendar/detail/die-zauberfloete/',
+   free:false,ongoing:false,closing:false,isNew:true},
+
   {id:7,cat:'opera',genre:'',
    title:'Mozart Concert in Historical Costume',
    subtitle:'Nightly · Musikverein, Palace Orangeries',
@@ -416,16 +446,6 @@ const EVENTS = [
    desc:'Vienna\'s oldest jazz club, a rustic stone cellar beneath the Ruprechtskirche near the Danube Canal, open since the 1960s. All jazz styles, six nights a week. No reservations needed; arrive early for a table.',
    infoUrl:'https://www.jazzland.at',ticketUrl:'https://www.jazzland.at',
    free:false,ongoing:true,closing:false,isNew:false},
-
-  {id:24,cat:'music',genre:'Jazz',
-   title:'Björn Meyer at Porgy & Bess',
-   subtitle:'Bass / improvisation · one of Europe\'s top jazz clubs',
-   venue:'Porgy & Bess Jazz & Music Club',
-   dateDisplay:'May 29, 2026',timeDisplay:'8:00 PM',
-   sortDate:'2026-05-29',dates:['2026-05-29'],month:'may',
-   desc:'Innovative Swiss bassist and composer Björn Meyer brings his boundary-pushing improvisation to Porgy & Bess — consistently rated one of Central Europe\'s most important jazz venues.',
-   infoUrl:'https://www.porgy.at/en/events/upcoming',ticketUrl:'https://www.porgy.at/en/events/upcoming',
-   free:false,ongoing:false,closing:false,isNew:false},
 
   {id:25,cat:'music',genre:'Rock / Poetry',
    title:'Patti Smith Quartet at Arena Wien',
@@ -518,6 +538,16 @@ const EVENTS = [
    free:false,ongoing:false,closing:false,isNew:false},
 
   // ── CINEMA (Haydn Kino) ───────────────────────────────
+  {id:38,cat:'cinema',genre:'Horror / Sci-Fi',
+   title:'Backrooms',
+   subtitle:'Dir. Kane Parsons · A24 · Chiwetel Ejiofor, Renate Reinsve · 89% RT',
+   venue:'Haydn Kino',
+   dateDisplay:'Now showing — check haydnkino.at',timeDisplay:'Check schedule',
+   sortDate:'2026-05-29',dates:[],month:'both',
+   desc:'A24\'s psychological horror sensation — furniture store owner Clark (Chiwetel Ejiofor) and his therapist (Renate Reinsve) discover a dimension of endless liminal spaces beneath their building. Directed by Kane Parsons (the Backrooms YouTube creator) in his feature debut. 89% on Rotten Tomatoes, $77M opening weekend. One of the year\'s must-see horrors.',
+   infoUrl:'https://www.haydnkino.at/Cinema/Overview',ticketUrl:'https://www.haydnkino.at/Cinema/Overview',
+   free:false,ongoing:false,closing:false,isNew:true},
+
   {id:43,cat:'cinema',genre:'Horror',
    title:'28 Years Later: The Bone Temple',
    subtitle:'Dir. Nia DaCosta · Ralph Fiennes, Jack O\'Connell',
@@ -808,44 +838,46 @@ const SITES = [
    infoUrl:'https://www.wiener-staatsoper.at/en/visit/tours/',ticketUrl:'https://www.wiener-staatsoper.at/en/visit/tours/',price:'~€13 tour · €3–10 standing room'},
 ];
 
-// ── 3-DAY SCHEDULE (May 26–28) ────────────────────────
-// Today: Tuesday May 26 · Patti Smith at Arena Wien this Sunday May 31!
+// ── 3-DAY SCHEDULE (May 30 – June 1) ─────────────────
+// Today: Saturday May 30 · Vienna Phil Chamber Music this morning!
+// Tomorrow: Sunday May 31 · ⭐ Patti Smith at Arena Wien tonight!
+// Monday June 2: Start of June — Carmen opens at Staatsoper tomorrow
 const THREE_DAY = [
   {
-    label:'Today',dayName:'Tuesday, May 26',
-    dayNote:'Museum day · new Haydn Kino schedule posted last night',
+    label:'Today',dayName:'Saturday, May 30',
+    dayNote:'⭐ Vienna Philharmonic Chamber Music this morning — Mahler Hall!',
     items:[
-      {time:'10:00',name:'Helga Philipp at Albertina',detail:'Op-art & kinetic works · open until Sept · Wed/Fri open until 9 PM',free:false,hot:false,url:'https://www.albertina.at/en/exhibitions/'},
-      {time:'13:00',name:'Naschmarkt lunch',detail:'Vienna\'s famous open-air market — 5 min from Albertina',free:true,hot:false,url:'https://www.naschmarkt-vienna.com'},
-      {time:'14:30',name:'Gustave Courbet at Leopold Museum',detail:'⚠️ Closes June 21 · Austria\'s first Courbet retrospective · MuseumsQuartier',free:false,hot:true,url:'https://www.leopoldmuseum.org/en/exhibitions/current'},
-      {time:'17:00',name:'Waldmüller at Lower Belvedere',detail:'⚠️ Closes June 14 · Biedermeier masterworks',free:false,hot:false,url:'https://www.belvedere.at/en/current-exhibitions'},
-      {time:'21:00',name:'Jazzland Vienna',detail:'Live jazz in the stone cellar · 6 nights a week',free:false,hot:false,url:'https://www.jazzland.at'},
+      {time:'11:00',name:'⭐ Vienna Philharmonic Chamber Music',detail:'Musikverein Mahler Hall · tickets often at box office · intimate & unmissable',free:false,hot:true,url:'https://www.wienerphilharmoniker.at/en/konzerte'},
+      {time:'13:30',name:'Naschmarkt lunch',detail:'Vienna\'s famous Saturday market — busiest and best on weekends',free:true,hot:false,url:'https://www.naschmarkt-vienna.com'},
+      {time:'15:00',name:'Waldmüller at Lower Belvedere',detail:'⚠️ Closes June 14 · Biedermeier masterworks · lovely garden stroll after',free:false,hot:false,url:'https://www.belvedere.at/en/current-exhibitions'},
+      {time:'18:00',name:'Haydn Kino — Backrooms or 28 Years Later',detail:'A24 horror smash or the 28 Days Later sequel — both showing now',free:false,hot:false,url:'https://www.haydnkino.at/Cinema/Overview'},
+      {time:'20:30',name:'Mozart Concert at Schönbrunn Orangery',detail:'Period costume concert · imperial setting · book online',free:false,hot:false,url:'https://www.mozart.co.at'},
     ],
-    tip:'The new Haydn Kino programme was posted last night — check haydnkino.at now for this week\'s English film schedule (valid Thu–Wed). Both closing exhibitions — Courbet and Waldmüller — are within easy reach this afternoon.'
+    tip:'The Vienna Philharmonic Chamber Music at 11 AM in the Mahler Hall is one of Vienna\'s great hidden pleasures — a rare chance to hear Philharmonic musicians up close for far less than a Golden Hall concert. Arrive 10 min early.'
   },
   {
-    label:'Tomorrow',dayName:'Wednesday, May 27',
-    dayNote:'Extended museum hours tonight · Albertina open until 9 PM',
+    label:'Tomorrow',dayName:'Sunday, May 31',
+    dayNote:'⭐ Patti Smith at Arena Wien tonight — don\'t miss it!',
     items:[
-      {time:'10:00',name:'Kunsthistorisches Museum',detail:'Canaletto & Bellotto · Habsburgs\' imperial art collection',free:false,hot:false,url:'https://www.khm.at/en'},
-      {time:'13:00',name:'MuseumsQuartier courtyard',detail:'Free outdoor space · café lunch · Vienna\'s best hangout',free:true,hot:false,url:'https://www.mqw.at/en/'},
-      {time:'15:00',name:'Albertina — extended evening',detail:'Helga Philipp + Otto meets Albertina (opens June 3) · open until 9 PM on Wednesdays',free:false,hot:false,url:'https://www.albertina.at/en/exhibitions/'},
-      {time:'18:30',name:'Ringtram sunset ride',detail:'Tram 1 or 2 circles the entire Ringstrasse — 20 min of free city panorama',free:true,hot:false,url:'https://www.wienerlinien.at/web/wl-en'},
-      {time:'21:00',name:'Jazzland Vienna',detail:'Stone cellar jazz · Ruprechtskirche · open most nights',free:false,hot:false,url:'https://www.jazzland.at'},
+      {time:'10:00',name:'Schönbrunn Palace & Gardens',detail:'Imperial summer palace · book tickets online · arrive before crowds',free:false,hot:false,url:'https://www.schoenbrunn.at/en/tickets-and-prices/all-tickets-tours'},
+      {time:'13:00',name:'Belvedere Gardens stroll',detail:'Free walk through formal gardens · lovely before the concert',free:true,hot:false,url:'https://www.belvedere.at/en'},
+      {time:'15:00',name:'Gustave Courbet at Leopold Museum',detail:'⚠️ Closes June 21 · Austria\'s first Courbet retrospective',free:false,hot:false,url:'https://www.leopoldmuseum.org/en/exhibitions/current'},
+      {time:'18:30',name:'Dinner near Arena Wien',detail:'Simmeringer Hauptstraße neighbourhood · pre-gig dinner',free:false,hot:false,url:'https://www.arena.wien'},
+      {time:'20:00',name:'⭐ PATTI SMITH QUARTET at Arena Wien',detail:'Wiener Festwochen · legendary punk poet · converted slaughterhouse venue',free:false,hot:true,url:'https://www.festwochen.at/en/patti-smith-quartet'},
     ],
-    tip:'Wednesday is Albertina\'s extended evening (open until 9 PM). After the KHM in the morning, this gives you a full cultural day without crowds — and the Ringstrasse tram ride at golden hour is completely free.'
+    tip:'Tonight is a once-in-a-decade opportunity — Patti Smith performing in a converted slaughterhouse for the Festwochen\'s 75th anniversary. The Arena Wien is a historic alternative venue. Take U3 to Erdberg, then a short walk.'
   },
   {
-    label:'Thursday',dayName:'Thursday, May 28',
-    dayNote:'KHM open until 9 PM · Haydn Kino new films start',
+    label:'Monday',dayName:'Monday, June 1',
+    dayNote:'Carmen opens at Staatsoper tonight! · New Haydn Kino schedule tonight',
     items:[
-      {time:'10:00',name:'St. Stephen\'s Cathedral free tower',detail:'Free south tower climb · 343 steps · panoramic city views',free:true,hot:false,url:'https://www.stephanskirche.at'},
-      {time:'12:00',name:'Hofburg Imperial Palace',detail:'Imperial Apartments, Sisi Museum & Silver Collection',free:false,hot:false,url:'https://www.hofburg-wien.at/en/'},
-      {time:'15:00',name:'Kunsthistorisches Museum — late evening',detail:'Canaletto & Bellotto · open until 9 PM on Thursdays · least crowded at 6 PM',free:false,hot:true,url:'https://www.khm.at/en'},
-      {time:'19:00',name:'Haydn Kino — new weekly films start',detail:'New Thu–Wed programme begins · 28 Years Later + Billie Eilish 3D + more',free:false,hot:false,url:'https://www.haydnkino.at/Cinema/Overview'},
-      {time:'20:30',name:'Mozart Concert in Costume',detail:'Nightly at Schönbrunn Orangery or Musikverein · book online',free:false,hot:false,url:'https://www.mozart.co.at'},
+      {time:'10:00',name:'Kunsthistorisches Museum',detail:'Canaletto & Bellotto · quieter Monday crowds · Habsburg art collection',free:false,hot:false,url:'https://www.khm.at/en'},
+      {time:'13:30',name:'MuseumsQuartier courtyard',detail:'Vienna\'s best free outdoor hangout · café lunch · Leopold Museum nearby',free:true,hot:false,url:'https://www.mqw.at/en/'},
+      {time:'15:30',name:'Courbet at Leopold Museum',detail:'⚠️ Closes June 21 · Austria\'s first Courbet retrospective',free:false,hot:false,url:'https://www.leopoldmuseum.org/en/exhibitions/current'},
+      {time:'19:00',name:'⭐ Carmen at Vienna State Opera',detail:'Bizet · Bieito\'s acclaimed production · Viotti conducts · opens tonight!',free:false,hot:true,url:'https://www.wiener-staatsoper.at/en/calendar/detail/carmen/'},
+      {time:'20:00',name:'Haydn Kino — new weekly schedule posted tonight',detail:'Check haydnkino.at after 8 PM for Thu–Wed listings',free:false,hot:false,url:'https://www.haydnkino.at/Cinema/Overview'},
     ],
-    tip:'Thursday is the KHM\'s extended evening — arrive at 6 PM for the Canaletto & Bellotto show with almost no queues and the spectacular museum halls to yourself. The new Haydn Kino programme also starts today.'
+    tip:'June 1 is a great day — Carmen opens at the Staatsoper in the evening, and the new Haydn Kino programme is posted tonight around 8 PM. Mondays are among the least-crowded days for the KHM.'
   },
 ];
 
