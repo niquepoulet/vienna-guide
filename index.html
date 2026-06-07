@@ -203,7 +203,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
     <div class="tdt-left">
       <span class="tdt-badge" id="weekend-badge">Next 3 Days</span>
       <div>
-        <div class="tdt-title" id="three-day-title">May 30 – June 1, 2026 — Patti Smith at Arena Wien TOMORROW!</div>
+        <div class="tdt-title" id="three-day-title">June 7–9, 2026 — Carmen + Garbage both Monday night!</div>
         <div class="tdt-subtitle" id="tdt-sub">Curated schedule · Click to expand ▾</div>
       </div>
     </div>
@@ -298,7 +298,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 
   <!-- EXHIBITION PANEL -->
   <div class="panel" id="panel-exhibition">
-    <div class="ib"><span class="ii">🖼️</span><span>All major exhibitions present information in English. <strong>⚠️ Closing soon: Waldmüller at Lower Belvedere (June 14) · Friedl Kubelka at Belvedere 21 (June 6) · Courbet at Leopold Museum (June 21).</strong> <strong>Otto meets Albertina opens June 3.</strong> KHM's Canaletto &amp; Bellotto runs all summer.</span></div>
+    <div class="ib"><span class="ii">🖼️</span><span>All major exhibitions present information in English. <strong>⚠️ Closing soon: Waldmüller at Lower Belvedere (June 14) · Courbet at Leopold Museum (June 21).</strong> <strong>Now open: Otto meets Albertina</strong> (through Jan 2027). KHM's Canaletto &amp; Bellotto runs all summer.</span></div>
     <div class="fbar"><span class="fl">Filter:</span><button class="fb active" data-filter="all">All</button><button class="fb" data-filter="closing">Closing soon</button></div>
     <div class="sh"><span class="icon">🖼️</span><h2>Special Exhibitions</h2><span class="cnt" id="cnt-exhibit">0</span></div>
     <div class="eg" id="g-exhibit"></div>
@@ -340,7 +340,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 <script>
 // ════════════════════════════════════════════════════════
 //  DATA — update this block to refresh the dashboard
-//  Last data refresh: May 30, 2026
+//  Last data refresh: June 7, 2026
 // ════════════════════════════════════════════════════════
 
 const EVENTS = [
@@ -390,8 +390,8 @@ const EVENTS = [
    title:'Vienna Philharmonic Chamber Music',
    subtitle:'Musikverein — Gustav Mahler Hall · Saturday series',
    venue:'Musikverein — Mahler Hall',
-   dateDisplay:'Saturdays: May 30, June 6, 13, 20 & 27',timeDisplay:'11:00 AM',
-   sortDate:'2026-05-30',dates:['2026-05-30','2026-06-06','2026-06-13','2026-06-20','2026-06-27'],month:'both',
+   dateDisplay:'Saturdays: June 13, 20 & 27',timeDisplay:'11:00 AM',
+   sortDate:'2026-06-13',dates:['2026-06-13','2026-06-20','2026-06-27'],month:'jun',
    desc:'A hidden gem — members of the Vienna Philharmonic perform chamber music in the intimate Mahler Hall on Saturday mornings. Rarely sold out, tickets often available at the box office.',
    infoUrl:'https://www.wienerphilharmoniker.at/en/konzerte',ticketUrl:'https://www.viennaconcerts.com/',
    free:false,ongoing:true,closing:false,isNew:false},
@@ -408,11 +408,11 @@ const EVENTS = [
 
   {id:4,cat:'opera',genre:'',
    title:'Vienna Philharmonic — Lorenzo Viotti',
-   subtitle:'Musikverein, Golden Hall · 3 concerts',
+   subtitle:'Musikverein, Golden Hall · Poulenc · Debussy · Zemlinsky',
    venue:'Musikverein — Golden Hall',
    dateDisplay:'June 13, 14 & 15, 2026',timeDisplay:'7:30 PM',
    sortDate:'2026-06-13',dates:['2026-06-13','2026-06-14','2026-06-15'],month:'jun',
-   desc:'The Vienna Philharmonic at the Golden Hall under Lorenzo Viotti — who also conducts the free Summer Night Concert at Schönbrunn on June 19. Programme TBC; check wienerphilharmoniker.at.',
+   desc:'The Vienna Philharmonic at the Golden Hall under Lorenzo Viotti — programme features Poulenc, Debussy, and Alexander Zemlinsky. Same maestro conducts the free Summer Night Concert at Schönbrunn on June 19 with Bryn Terfel.',
    infoUrl:'https://www.wienerphilharmoniker.at/en/konzerte',ticketUrl:'https://www.viennaconcerts.com/vienna-philharmonic-orchestra',
    free:false,ongoing:false,closing:false,isNew:false},
 
@@ -446,16 +446,6 @@ const EVENTS = [
    desc:'Vienna\'s oldest jazz club, a rustic stone cellar beneath the Ruprechtskirche near the Danube Canal, open since the 1960s. All jazz styles, six nights a week. No reservations needed; arrive early for a table.',
    infoUrl:'https://www.jazzland.at',ticketUrl:'https://www.jazzland.at',
    free:false,ongoing:true,closing:false,isNew:false},
-
-  {id:25,cat:'music',genre:'Rock / Poetry',
-   title:'Patti Smith Quartet at Arena Wien',
-   subtitle:'Wiener Festwochen · outdoor arena · final Vienna date',
-   venue:'Arena Wien',
-   dateDisplay:'May 31, 2026',timeDisplay:'8:00 PM',
-   sortDate:'2026-05-31',dates:['2026-05-31'],month:'may',
-   desc:'Patti Smith and her Quartet at the legendary Arena Wien — a converted former slaughterhouse that has hosted 50 years of alternative and rock history. Her final Vienna appearance in the Festwochen.',
-   infoUrl:'https://www.festwochen.at/en/patti-smith-quartet',ticketUrl:'https://www.festwochen.at/en/patti-smith-quartet',
-   free:false,ongoing:false,closing:false,isNew:false},
 
   {id:26,cat:'music',genre:'Rock',
    title:'Garbage at Wiener Stadthalle',
@@ -517,6 +507,26 @@ const EVENTS = [
    infoUrl:'https://www.wuk.at',ticketUrl:'https://www.viennaticketoffice.com/rockpop_en.php',
    free:false,ongoing:false,closing:false,isNew:false},
 
+  {id:39,cat:'music',genre:'Indie / Alt',
+   title:'Mac DeMarco at Arena Wien Open Air',
+   subtitle:'Indie rock / jangle pop · Arena Open Air',
+   venue:'Arena Wien Open Air',
+   dateDisplay:'June 22, 2026',timeDisplay:'7:00 PM',
+   sortDate:'2026-06-22',dates:['2026-06-22'],month:'jun',
+   desc:'Canadian indie rock troubadour Mac DeMarco performs in the Arena Wien Open Air — his breezy, jangly guitar pop and eccentric stage presence make for one of the most enjoyable live shows in indie music.',
+   infoUrl:'https://www.arena.wien',ticketUrl:'https://www.stereoboard.com/mac-demarco-tickets/vienna',
+   free:false,ongoing:false,closing:false,isNew:true},
+
+  {id:40,cat:'music',genre:'Art-pop / Folk',
+   title:'Aldous Harding at Arena Wien',
+   subtitle:'New Zealand art-pop · avant-garde folk',
+   venue:'Arena Wien',
+   dateDisplay:'June 23, 2026',timeDisplay:'8:00 PM',
+   sortDate:'2026-06-23',dates:['2026-06-23'],month:'jun',
+   desc:'New Zealand singer-songwriter Aldous Harding performs her hypnotic, shape-shifting art-pop and folk at Arena Wien. Known for her arresting physical presence and eerily beautiful voice. One of the most original performers in contemporary music.',
+   infoUrl:'https://www.arena.wien',ticketUrl:'https://www.livenation.at/en/events/aldous-harding-vienna-tickets-edp1657108',
+   free:false,ongoing:false,closing:false,isNew:true},
+
   {id:32,cat:'music',genre:'Dream-pop',
    title:'Men I Trust at Arena Wien',
    subtitle:'Dream-pop / shoegaze · Canadian trio',
@@ -538,6 +548,26 @@ const EVENTS = [
    free:false,ongoing:false,closing:false,isNew:false},
 
   // ── CINEMA (Haydn Kino) ───────────────────────────────
+  {id:41,cat:'cinema',genre:'Sci-Fi / Comedy',
+   title:'Project Hail Mary',
+   subtitle:'Dir. Phil Lord & Chris Miller · Ryan Gosling · $141M worldwide',
+   venue:'Haydn Kino',
+   dateDisplay:'Now showing — check haydnkino.at',timeDisplay:'Check schedule',
+   sortDate:'2026-06-07',dates:[],month:'jun',
+   desc:'Ryan Gosling stars as Ryland Grace — a middle school teacher who wakes up on an interstellar spacecraft with no memory of how he got there. Based on Andy Weir\'s beloved novel, directed by Phil Lord and Christopher Miller (LEGO Movie). Sandra Hüller co-stars. One of the year\'s most acclaimed films — funny, moving, and scientifically brilliant.',
+   infoUrl:'https://www.haydnkino.at/Cinema/Overview',ticketUrl:'https://www.haydnkino.at/Cinema/Overview',
+   free:false,ongoing:false,closing:false,isNew:true},
+
+  {id:42,cat:'cinema',genre:'Comedy / Fashion',
+   title:'The Devil Wears Prada 2',
+   subtitle:'Dir. David Frankel · Anne Hathaway, Meryl Streep, Emily Blunt',
+   venue:'Haydn Kino',
+   dateDisplay:'Now showing — check haydnkino.at',timeDisplay:'Check schedule',
+   sortDate:'2026-06-07',dates:[],month:'jun',
+   desc:'The long-awaited sequel reunites the original cast — Anne Hathaway, Meryl Streep, Emily Blunt, and Stanley Tucci — for a return to Runway magazine. Directed once again by David Frankel. Expect sharp wit, haute couture, and devastating one-liners.',
+   infoUrl:'https://www.haydnkino.at/Cinema/Overview',ticketUrl:'https://www.haydnkino.at/Cinema/Overview',
+   free:false,ongoing:false,closing:false,isNew:true},
+
   {id:38,cat:'cinema',genre:'Horror / Sci-Fi',
    title:'Backrooms',
    subtitle:'Dir. Kane Parsons · A24 · Chiwetel Ejiofor, Renate Reinsve · 89% RT',
@@ -566,16 +596,6 @@ const EVENTS = [
    sortDate:'2026-05-29',dates:[],month:'may',
    desc:'A 3D concert film documenting Eilish\'s Manchester tour shows, co-directed by Billie Eilish and James Cameron. An immersive, cinematic concert experience for fans of the two-time Grammy Artist of the Year. Nonstop Kinoabo valid.',
    infoUrl:'https://www.haydnkino.at/Cinema/Movie?filmId=3183',ticketUrl:'https://www.haydnkino.at/Cinema/Overview',
-   free:false,ongoing:false,closing:false,isNew:false},
-
-  {id:44,cat:'cinema',genre:'Animation / Event',
-   title:'The Amazing Digital Circus: The Last Act',
-   subtitle:'Dir. Gooseworx · 93 min · one-night cinema event',
-   venue:'Haydn Kino (Saal A)',
-   dateDisplay:'June 4, 2026',timeDisplay:'19:00 & 21:00',
-   sortDate:'2026-06-04',dates:['2026-06-04'],month:'jun',
-   desc:'The grand finale of the viral YouTube phenomenon — Episodes 8 & 9 including the exclusive cinema premiere of the final chapter. Pomni and the troupe face the ultimate glitch. A special one-night event; two screenings only.',
-   infoUrl:'https://www.haydnkino.at/Cinema/Movie?filmId=3198',ticketUrl:'https://www.haydnkino.at/Ticket/Reserve?prgId=130483&screenId=1',
    free:false,ongoing:false,closing:false,isNew:false},
 
   {id:34,cat:'cinema',genre:'Action / Fantasy',
@@ -649,16 +669,6 @@ const EVENTS = [
    free:false,ongoing:true,closing:false,isNew:false},
 
   // ── OUTDOOR & FESTIVALS ───────────────────────────────
-  {id:55,cat:'outdoor',genre:'',
-   title:'Veganmania — Free Food Festival · FREE',
-   subtitle:'MuseumsQuartier · 4 days · plant-based street food',
-   venue:'MuseumsQuartier (MQ Courtyard)',
-   dateDisplay:'June 4–7, 2026',timeDisplay:'All day',
-   sortDate:'2026-06-04',dates:['2026-06-04','2026-06-05','2026-06-06','2026-06-07'],month:'jun',
-   desc:'Vienna\'s popular spring Veganmania festival fills the MuseumsQuartier with plant-based street food, live music, and market stalls for four days. Free to enter — just pay for food. One of Vienna\'s most convivial free outdoor events.',
-   infoUrl:'https://www.visitingvienna.com/entertainment/june/',ticketUrl:null,
-   free:true,ongoing:false,closing:false,isNew:true},
-
   {id:54,cat:'outdoor',genre:'',
    title:'Kino am Dach — Rooftop Open-Air Cinema',
    subtitle:'Vienna City Library rooftop · all June',
@@ -741,16 +751,6 @@ const EVENTS = [
    free:false,ongoing:false,closing:false,isNew:true},
 
   // ── EXHIBITIONS ───────────────────────────────────────
-  {id:76,cat:'exhibit',genre:'',
-   title:'Friedl Kubelka / vom Gröller — Films',
-   subtitle:'Belvedere 21 · CLOSING June 6 ⚠️',
-   venue:'Belvedere 21',
-   dateDisplay:'Now – June 6, 2026 ⚠️',timeDisplay:'Tue–Sun 11:00–18:00 (Wed until 21:00)',
-   sortDate:'2026-05-26',dates:[],month:'both',
-   desc:'The experimental portrait films of Friedl Kubelka vom Gröller — intimate, unflinching cinema studies of people that challenge conventional notions of identity and visibility. Last 11 days — closing June 6.',
-   infoUrl:'https://www.belvedere.at/en/current-exhibitions',ticketUrl:'https://www.belvedere.at/en/visit',
-   free:false,ongoing:true,closing:true,isNew:true},
-
   {id:75,cat:'exhibit',genre:'',
    title:'Ferdinand Georg Waldmüller — Lower Belvedere',
    subtitle:'Closes June 14 ⚠️ · Biedermeier master',
@@ -838,46 +838,44 @@ const SITES = [
    infoUrl:'https://www.wiener-staatsoper.at/en/visit/tours/',ticketUrl:'https://www.wiener-staatsoper.at/en/visit/tours/',price:'~€13 tour · €3–10 standing room'},
 ];
 
-// ── 3-DAY SCHEDULE (May 30 – June 1) ─────────────────
-// Today: Saturday May 30 · Vienna Phil Chamber Music this morning!
-// Tomorrow: Sunday May 31 · ⭐ Patti Smith at Arena Wien tonight!
-// Monday June 2: Start of June — Carmen opens at Staatsoper tomorrow
+// ── 3-DAY SCHEDULE (June 7–9) ─────────────────────────
+// Today: Sunday June 8 · Big choice tomorrow: Carmen OR Garbage
 const THREE_DAY = [
   {
-    label:'Today',dayName:'Saturday, May 30',
-    dayNote:'⭐ Vienna Philharmonic Chamber Music this morning — Mahler Hall!',
+    label:'Today',dayName:'Sunday, June 7',
+    dayNote:'Sunny Sunday in Vienna — Belvedere, Project Hail Mary, Mozart',
     items:[
-      {time:'11:00',name:'⭐ Vienna Philharmonic Chamber Music',detail:'Musikverein Mahler Hall · tickets often at box office · intimate & unmissable',free:false,hot:true,url:'https://www.wienerphilharmoniker.at/en/konzerte'},
-      {time:'13:30',name:'Naschmarkt lunch',detail:'Vienna\'s famous Saturday market — busiest and best on weekends',free:true,hot:false,url:'https://www.naschmarkt-vienna.com'},
-      {time:'15:00',name:'Waldmüller at Lower Belvedere',detail:'⚠️ Closes June 14 · Biedermeier masterworks · lovely garden stroll after',free:false,hot:false,url:'https://www.belvedere.at/en/current-exhibitions'},
-      {time:'18:00',name:'Haydn Kino — Backrooms or 28 Years Later',detail:'A24 horror smash or the 28 Days Later sequel — both showing now',free:false,hot:false,url:'https://www.haydnkino.at/Cinema/Overview'},
-      {time:'20:30',name:'Mozart Concert at Schönbrunn Orangery',detail:'Period costume concert · imperial setting · book online',free:false,hot:false,url:'https://www.mozart.co.at'},
+      {time:'10:00',name:'Schönbrunn Palace & Gardens',detail:'Imperial summer palace in full summer glory · book online',free:false,hot:false,url:'https://www.schoenbrunn.at/en/tickets-and-prices/all-tickets-tours'},
+      {time:'13:00',name:'Belvedere Gardens stroll',detail:'Free walk through formal gardens · Waldmüller closes June 14 ⚠️',free:true,hot:false,url:'https://www.belvedere.at/en'},
+      {time:'14:30',name:'Waldmüller at Lower Belvedere',detail:'⚠️ Closes June 14 — one week left! Biedermeier masterworks',free:false,hot:true,url:'https://www.belvedere.at/en/current-exhibitions'},
+      {time:'18:00',name:'Project Hail Mary at Haydn Kino',detail:'Ryan Gosling · Sci-fi comedy · Phil Lord & Chris Miller · must-see',free:false,hot:true,url:'https://www.haydnkino.at/Cinema/Overview'},
+      {time:'20:30',name:'Mozart Concert in Costume',detail:'Nightly at Schönbrunn Orangery or Musikverein · book online',free:false,hot:false,url:'https://www.mozart.co.at'},
     ],
-    tip:'The Vienna Philharmonic Chamber Music at 11 AM in the Mahler Hall is one of Vienna\'s great hidden pleasures — a rare chance to hear Philharmonic musicians up close for far less than a Golden Hall concert. Arrive 10 min early.'
+    tip:'Only 7 days left for Waldmüller at the Lower Belvedere — combine it with a walk through the beautiful free gardens today. Project Hail Mary at Haydn Kino is the film everyone\'s talking about right now.'
   },
   {
-    label:'Tomorrow',dayName:'Sunday, May 31',
-    dayNote:'⭐ Patti Smith at Arena Wien tonight — don\'t miss it!',
+    label:'Tomorrow',dayName:'Monday, June 8',
+    dayNote:'⭐ Big choice tonight: Carmen at Staatsoper OR Garbage at Stadthalle',
     items:[
-      {time:'10:00',name:'Schönbrunn Palace & Gardens',detail:'Imperial summer palace · book tickets online · arrive before crowds',free:false,hot:false,url:'https://www.schoenbrunn.at/en/tickets-and-prices/all-tickets-tours'},
-      {time:'13:00',name:'Belvedere Gardens stroll',detail:'Free walk through formal gardens · lovely before the concert',free:true,hot:false,url:'https://www.belvedere.at/en'},
-      {time:'15:00',name:'Gustave Courbet at Leopold Museum',detail:'⚠️ Closes June 21 · Austria\'s first Courbet retrospective',free:false,hot:false,url:'https://www.leopoldmuseum.org/en/exhibitions/current'},
-      {time:'18:30',name:'Dinner near Arena Wien',detail:'Simmeringer Hauptstraße neighbourhood · pre-gig dinner',free:false,hot:false,url:'https://www.arena.wien'},
-      {time:'20:00',name:'⭐ PATTI SMITH QUARTET at Arena Wien',detail:'Wiener Festwochen · legendary punk poet · converted slaughterhouse venue',free:false,hot:true,url:'https://www.festwochen.at/en/patti-smith-quartet'},
+      {time:'10:00',name:'Kunsthistorisches Museum',detail:'Canaletto & Bellotto · quieter Monday crowds',free:false,hot:false,url:'https://www.khm.at/en'},
+      {time:'13:00',name:'MuseumsQuartier courtyard',detail:'Free outdoor space · café lunch · Leopold Museum nearby',free:true,hot:false,url:'https://www.mqw.at/en/'},
+      {time:'15:00',name:'Courbet at Leopold Museum',detail:'⚠️ Closes June 21 · Austria\'s first major Courbet retrospective',free:false,hot:false,url:'https://www.leopoldmuseum.org/en/exhibitions/current'},
+      {time:'19:00',name:'⭐ Carmen at Vienna State Opera',detail:'Bizet · Bieito\'s visceral production · Viotti conducts · June 8',free:false,hot:true,url:'https://www.wiener-staatsoper.at/en/calendar/detail/carmen/2026-06-08/'},
+      {time:'19:30',name:'— OR — Garbage at Wiener Stadthalle',detail:'Shirley Manson & Garbage · alt-rock arena show · 7:30 PM',free:false,hot:true,url:'https://www.ticketmaster.at'},
     ],
-    tip:'Tonight is a once-in-a-decade opportunity — Patti Smith performing in a converted slaughterhouse for the Festwochen\'s 75th anniversary. The Arena Wien is a historic alternative venue. Take U3 to Erdberg, then a short walk.'
+    tip:'Monday June 8 is a genuine dilemma: Bizet\'s Carmen at the magnificent Staatsoper (Bieito\'s raw, acclaimed production) or Garbage in full alt-rock force at Stadthalle. Both start between 7 and 7:30 PM — you\'ll have to choose.'
   },
   {
-    label:'Monday',dayName:'Monday, June 1',
-    dayNote:'Carmen opens at Staatsoper tonight! · New Haydn Kino schedule tonight',
+    label:'Tuesday',dayName:'Tuesday, June 9',
+    dayNote:'Quiet mid-week culture day · Haydn Kino afternoon',
     items:[
-      {time:'10:00',name:'Kunsthistorisches Museum',detail:'Canaletto & Bellotto · quieter Monday crowds · Habsburg art collection',free:false,hot:false,url:'https://www.khm.at/en'},
-      {time:'13:30',name:'MuseumsQuartier courtyard',detail:'Vienna\'s best free outdoor hangout · café lunch · Leopold Museum nearby',free:true,hot:false,url:'https://www.mqw.at/en/'},
-      {time:'15:30',name:'Courbet at Leopold Museum',detail:'⚠️ Closes June 21 · Austria\'s first Courbet retrospective',free:false,hot:false,url:'https://www.leopoldmuseum.org/en/exhibitions/current'},
-      {time:'19:00',name:'⭐ Carmen at Vienna State Opera',detail:'Bizet · Bieito\'s acclaimed production · Viotti conducts · opens tonight!',free:false,hot:true,url:'https://www.wiener-staatsoper.at/en/calendar/detail/carmen/'},
-      {time:'20:00',name:'Haydn Kino — new weekly schedule posted tonight',detail:'Check haydnkino.at after 8 PM for Thu–Wed listings',free:false,hot:false,url:'https://www.haydnkino.at/Cinema/Overview'},
+      {time:'10:00',name:'Albertina Museum',detail:'Helga Philipp Op-Art + Otto meets Albertina (just opened!) · Dürer collection',free:false,hot:false,url:'https://www.albertina.at/en/exhibitions/'},
+      {time:'13:00',name:'Naschmarkt browse & lunch',detail:'Vienna\'s famous open-air market · 5 min from Albertina',free:true,hot:false,url:'https://www.naschmarkt-vienna.com'},
+      {time:'15:00',name:'Hofburg Imperial Palace',detail:'Sisi Museum, Imperial Apartments & Silver Collection',free:false,hot:false,url:'https://www.hofburg-wien.at/en/'},
+      {time:'17:30',name:'Haydn Kino — choose your film',detail:'Project Hail Mary · Devil Wears Prada 2 · Backrooms · Disclosure Day',free:false,hot:false,url:'https://www.haydnkino.at/Cinema/Overview'},
+      {time:'20:30',name:'Jazzland Vienna',detail:'Live jazz in the stone cellar · 6 nights a week · no reservations',free:false,hot:false,url:'https://www.jazzland.at'},
     ],
-    tip:'June 1 is a great day — Carmen opens at the Staatsoper in the evening, and the new Haydn Kino programme is posted tonight around 8 PM. Mondays are among the least-crowded days for the KHM.'
+    tip:'Tuesday is a great day for the Albertina — it\'s open daily and the new Otto meets Albertina show (just opened June 3) is perfect for a lighter afternoon. End the day at Jazzland\'s cellar for live jazz under the Ruprechtskirche.'
   },
 ];
 
